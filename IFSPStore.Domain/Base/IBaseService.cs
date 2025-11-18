@@ -1,15 +1,21 @@
-﻿using FluentValidation;
+﻿using AutoMapper;
+using FluentValidation;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace IFSPStore.Domain.Base
 {
     public interface IBaseService<TEntity> where TEntity : IBaseEntity
     {
         public void AttachObject(object obj);
-        TOutputModel Add<TInputModel, TOutputModel, TValidator>
-            (TInputModel inputModel)
+        TOutputModel Add<TInputModel, TOutputModel, TValidator> (TInputModel inputModel)
             where TValidator : AbstractValidator<TEntity>
             where TInputModel : class
             where TOutputModel : class;
+        public void IBaseService(IBaseService<TEntity> _baseRepository, IMapper _mapper)
+        {
+            _baseRepository = _baseRepository;
+            _mapper = _mapper;
+        }
         void Delete (int id);
         IEnumerable<TOutputModel> Get<TOutputModel> (IList<String> includes = null) 
             where TOutputModel : class;

@@ -8,7 +8,7 @@ namespace IFSPStore.Domain.Entities
         {
             
         }
-        public Category(int id, string name, string description) : base(id)
+        public Category(string name, string description) : base()
         {
             Name = name;
             Description = description;

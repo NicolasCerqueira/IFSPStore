@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IFSPStore.Repository.Migrations
 {
-    [DbContext(typeof(IFSPStoreContext))]
+    [DbContext(typeof(MySqlContext))]
     [Migration("20251014135909_InitialCreate")]
     partial class InitialCreate
     {

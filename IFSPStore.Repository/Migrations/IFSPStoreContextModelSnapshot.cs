@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IFSPStore.Repository.Migrations
 {
-    [DbContext(typeof(IFSPStoreContext))]
+    [DbContext(typeof(MySqlContext))]
     partial class IFSPStoreContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

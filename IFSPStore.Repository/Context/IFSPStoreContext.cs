@@ -5,9 +5,9 @@ using static IFSPStore.Repository.Mapping.SaleMap;
 
 namespace IFSPStore.Repository.Context
 {
-   public class IFSPStoreContext : DbContext
+   public class MySqlContext : DbContext
     {
-        public IFSPStoreContext() : base()
+        public MySqlContext(DbContextOptions<MySqlContext>? op = null) : base(op)
         {
             //Database.EnsureCreated();//cria o banco de dados
         }

@@ -11,13 +11,13 @@ namespace IFSPStore.Test
         [TestMethod]
         public void TestCategory()
         {
-            using (var context = new IFSPStoreContext())
+            using (var context = new MySqlContext())
             {
                 Console.WriteLine("Connected");
 
-                var category1 = new Category(1, "Carnes");
-                var category2 = new Category(2, "Bebidas");
-                var category3 = new Category(3, "Doces");
+                var category1 = new Category("Carnes", "");
+                var category2 = new Category("Bebidas", "");
+                var category3 = new Category("Doces", "");
 
                 context.Categories.Add(category1);
                 context.Categories.Add(category2);
@@ -26,7 +26,7 @@ namespace IFSPStore.Test
                 Console.WriteLine("Insert Done!");
             }
 
-            using (var context = new IFSPStoreContext())
+            using (var context = new MySqlContext())
             {
                 foreach (var cat in context.Categories)
                 {
@@ -38,7 +38,7 @@ namespace IFSPStore.Test
         [TestMethod]
         public void TestProduct()
         {
-            var context = new IFSPStoreContext();
+            var context = new MySqlContext();
             var _categoryRepository = new BaseRepository<Category>(context);
             var _ProductRepository = new BaseRepository<Product>(context);
 

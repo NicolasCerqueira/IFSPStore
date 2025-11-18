@@ -60,6 +60,8 @@ namespace IFSPStore.Service.Service
         {
             var entity = _mapper.Map<TEntity>(inputModel);
             Validate(entity, Activator.CreateInstance<TValidator>());
+            _baseRepository.Update(entity);
+            return _mapper.Map<TOutputModel>(entity);
         }
     }
 }
