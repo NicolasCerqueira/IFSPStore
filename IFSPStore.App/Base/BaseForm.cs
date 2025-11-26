@@ -22,7 +22,7 @@ namespace IFSPStore.App.Base
                 ClearFields();
                 tabControlRegister.SelectedIndex = 1;
             }
-            
+
         }
         #endregion
         #region Eventos CRUD
@@ -49,7 +49,8 @@ namespace IFSPStore.App.Base
                     Delete(id);
                     PopulateList();
                 }
-            } else
+            }
+            else
             {
                 MessageBox.Show(@"Please, select any row!", @"IFSP Store",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -59,16 +60,12 @@ namespace IFSPStore.App.Base
         {
             PopulateList();
         }
-        private void dataGridViewList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Edit();
-        }
-            private void ClearFields()
+        private void ClearFields()
         {
             IsEditMode = false;
             foreach (var control in tabControlRegister.Controls)
             {
-                if(control is MaterialTextBoxEdit textBox) 
+                if (control is MaterialTextBoxEdit textBox)
                     textBox.Clear();
 
                 if (control is MaterialMaskedTextBox maskedTextBox)
@@ -83,7 +80,7 @@ namespace IFSPStore.App.Base
 
         protected virtual void New()
         {
-            ClearFields ();
+            ClearFields();
             tabControlRegister.SelectedIndex = 0;
             tabControlRegister.Focus();
         }
@@ -98,17 +95,22 @@ namespace IFSPStore.App.Base
             if (dataGridViewList.SelectedRows.Count > 0)
             {
                 IsEditMode = true;
-                var record  = dataGridViewList.SelectedRows[0];
+                var record = dataGridViewList.SelectedRows[0];
                 GridToForm(record);
-                //loadList();
+                loadList(record);
                 tabControlRegister.SelectedIndex = 0;
                 tabControlRegister.Focus();
-            } else
+            }
+            else
             {
-                MessageBox.Show(@"Please, select any row", @"IFSP Store", 
+                MessageBox.Show(@"Please, select any row", @"IFSP Store",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
+        }
+        protected virtual void loadList(DataGridViewRow? record)
+        {
+
         }
         protected virtual void GridToForm(DataGridViewRow? record)
         {
@@ -118,11 +120,17 @@ namespace IFSPStore.App.Base
         {
 
         }
-        
+
         protected virtual void PopulateList()
         {
 
         }
+
         #endregion
+            
+        private void dataGridViewList_CellDoubleClick(object sender, EventArgs e)
+        {
+            Edit();
+        }
     }
 }

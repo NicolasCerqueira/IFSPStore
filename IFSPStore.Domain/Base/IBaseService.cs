@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using FluentValidation;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using FluentValidation;
 
 namespace IFSPStore.Domain.Base
 {
@@ -11,13 +9,13 @@ namespace IFSPStore.Domain.Base
             where TValidator : AbstractValidator<TEntity>
             where TInputModel : class
             where TOutputModel : class;
-        public void IBaseService(IBaseService<TEntity> _baseRepository, IMapper _mapper)
+        /*public void IBaseService(IBaseService<TEntity> _baseRepository, IMapper _mapper)
         {
             _baseRepository = _baseRepository;
             _mapper = _mapper;
-        }
+        }*/
         void Delete (int id);
-        IEnumerable<TOutputModel> Get<TOutputModel> (IList<String> includes = null) 
+        IEnumerable<TOutputModel> Get<TOutputModel> (IList<string>? includes = null) 
             where TOutputModel : class;
         TOutputModel GetById<TOutputModel>(int id, IList<string>? includes = null) 
             where TOutputModel : class;
@@ -26,5 +24,6 @@ namespace IFSPStore.Domain.Base
             where TValidator : AbstractValidator<TEntity>
             where TInputModel : class
             where TOutputModel : class;
+        //object Get<T>(bool v);
     }
 }

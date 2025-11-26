@@ -10,13 +10,26 @@ namespace IFSPStore.Repository.Mapping
         {
             builder.ToTable("User");
             builder.HasKey(prop => prop.Id);
-            builder.Property(prop => prop.Name).IsRequired().HasMaxLength(100);
-            builder.Property(prop => prop.Login).IsRequired().HasMaxLength(100);
-            builder.Property(prop => prop.Email).IsRequired().HasMaxLength(100);
-            builder.Property(prop => prop.Password).IsRequired().HasMaxLength(100);
-            builder.Property(prop => prop.RegisterDate).IsRequired().HasMaxLength(100);
-            builder.Property(prop => prop.LoginDate).IsRequired().HasMaxLength(100);
-            builder.Property(prop => prop.IsActive).IsRequired().HasMaxLength(100);
+            builder.Property(prop => prop.Name)
+                .HasConversion(prop => prop!.ToString(), prop => prop)
+                .IsRequired()
+                .HasColumnName("Name")
+                .HasMaxLength(100);
+            builder.Property(prop => prop.Login)
+                .IsRequired().
+                HasMaxLength(100);
+            builder.Property(prop => prop.Email)
+                .IsRequired()
+                .HasMaxLength(100);
+            builder.Property(prop => prop.Password)
+                .IsRequired()
+                .HasMaxLength(100);
+            builder.Property(prop => prop.RegisterDate)
+                .HasDefaultValue(DateTime.Now);
+            builder.Property(prop => prop.LoginDate)
+                .IsRequired()
+                .HasMaxLength(100);
+            builder.Property(prop => prop.IsActive);
         }
     }
 }

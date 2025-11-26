@@ -8,9 +8,9 @@ namespace IFSPStore.Service.Validator
         public CategoryValidator()
         {
             RuleFor(c => c.Name)
-                .NotEmpty()
-                .WithMessage("Nome da categoria é obrigatório");
-            
+                .NotEmpty().NotNull()
+                .WithMessage("Nome da categoria é obrigatório")
+                .MaximumLength(50).WithMessage("Nome da categoria deve conter no máximo 50 caracteres");
         }
     }
 }

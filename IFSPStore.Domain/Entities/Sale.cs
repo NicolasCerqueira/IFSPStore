@@ -1,4 +1,5 @@
 ﻿using IFSPStore.Domain.Base;
+using Microsoft.Extensions.Options;
 
 namespace IFSPStore.Domain.Entities
 {
@@ -19,8 +20,8 @@ namespace IFSPStore.Domain.Entities
 
         public DateTime SaleDate { get; set; }
         public decimal SaleTotal { get; set; }
-        public User Salesman { get; set; }
-        public Customer Customer { get; set; }
+        public User? Salesman { get; set; }
+        public Customer? Customer { get; set; }
         public List<SaleItem> SaleItens { get; set; }
     }
 
@@ -30,7 +31,8 @@ namespace IFSPStore.Domain.Entities
         {
             
         }
-        public SaleItem (int id, Sale sale, Product product, decimal quantity, decimal unitPrice, decimal totalPrice) : base(id)
+        public SaleItem (int id, Sale? sale, Product? product, decimal quantity, 
+            decimal unitPrice, decimal totalPrice) : base(id)
         {
             Sale = sale;
             Product = product;
@@ -40,8 +42,8 @@ namespace IFSPStore.Domain.Entities
 
         }
 
-        public Sale Sale { get; set; }
-        public Product Product { get; set; }
+        public Sale? Sale { get; set; }
+        public virtual Product? Product { get; set; }
         public decimal Quantity { get; set; }
         public decimal UnitPrice { get; set; }
         public decimal TotalPrice { get; set; }

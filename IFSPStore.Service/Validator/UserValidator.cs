@@ -8,9 +8,11 @@ namespace IFSPStore.Service.Validator
         public UserValidator()
         {
             RuleFor(c => c.Name)
-                .NotEmpty()
+                .NotEmpty().NotNull()
                 .WithMessage("Nome do ususario obrigatório");
-            
+            RuleFor (c => c.Email)
+                .EmailAddress().WithMessage("E-mail inválido")
+                .NotEmpty().NotNull().WithMessage("E-mail obrigatório");
         }
     }
 }

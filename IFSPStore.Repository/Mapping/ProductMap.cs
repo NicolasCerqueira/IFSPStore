@@ -17,7 +17,9 @@ namespace IFSPStore.Repository.Mapping
             builder.Property(prop => prop.Quantity);
             builder.Property(prop => prop.SalesUnit)
                 .HasMaxLength(10);
-            builder.HasOne(prop => prop.Category); // relacionamento
+            builder.HasOne(prop => prop.Category)
+                .WithMany()
+                .HasConstraintName("nome_chave_estrangeira"); // relacionamento
         }
     }
 }

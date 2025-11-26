@@ -24,6 +24,6 @@ namespace IFSPStore.Domain.Entities
         public decimal Quantity { get; set; }
         public DateTime PurchaseDate { get; set; }
         public string SalesUnit { get; set; }
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
     }
 }

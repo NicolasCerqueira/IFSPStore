@@ -1,6 +1,6 @@
 ﻿namespace IFSPStore.Domain.Base
 {
-    public class IBaseEntity
+    public interface IBaseEntity
     {
 
     }

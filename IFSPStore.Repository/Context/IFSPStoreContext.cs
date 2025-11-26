@@ -9,7 +9,7 @@ namespace IFSPStore.Repository.Context
     {
         public MySqlContext(DbContextOptions<MySqlContext>? op = null) : base(op)
         {
-            //Database.EnsureCreated();//cria o banco de dados
+            Database.EnsureCreated();//cria o banco de dados
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

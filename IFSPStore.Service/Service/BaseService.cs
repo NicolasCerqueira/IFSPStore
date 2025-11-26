@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
 using IFSPStore.Domain.Base;
-using IFSPStore.Repository.Repository;
-using Microsoft.IdentityModel.Tokens.Experimental;
 
 namespace IFSPStore.Service.Service
 {
@@ -10,10 +8,16 @@ namespace IFSPStore.Service.Service
     {
         private readonly IBaseRepository<TEntity> _baseRepository;
         private readonly IMapper _mapper;
+
+        public BaseService(IBaseRepository<TEntity> baseRepository, IMapper mapper)
+        {
+            _baseRepository = baseRepository;
+            _mapper = mapper;
+        }
         public TOutputModel Add <TInputModel, TOutputModel, TValidator>(TInputModel inputModel)
             where TInputModel : class
             where TOutputModel : class
-            where TValidator : FluentValidation.AbstractValidator<TEntity>
+            where TValidator : AbstractValidator<TEntity>
         {
             var entity = _mapper.Map<TEntity>(inputModel);
             Validate(entity, Activator.CreateInstance<TValidator>());
@@ -41,7 +45,8 @@ namespace IFSPStore.Service.Service
             _baseRepository.Delete(id);
         }
 
-        public IEnumerable<TOutputModel> Get<TOutputModel>(IList<string> includes = null) where TOutputModel : class
+        public IEnumerable<TOutputModel> Get<TOutputModel>(IList<string>? includes = null) 
+            where TOutputModel : class
         {
             var entities = _baseRepository.Select(includes);
             return entities.Select(s => _mapper.Map<TOutputModel>(s));

@@ -32,17 +32,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
             tabControlRegister = new ReaLTaiizor.Controls.MaterialTabControl();
             tabPage1 = new TabPage();
+            panel1 = new Panel();
             btnCancel = new ReaLTaiizor.Controls.MaterialButton();
             btnSave = new ReaLTaiizor.Controls.MaterialButton();
             tabPage2 = new TabPage();
-            dataGridViewList = new DataGridView();
-            btnDelete = new ReaLTaiizor.Controls.MaterialButton();
-            btnEdit = new ReaLTaiizor.Controls.MaterialButton();
+            panel2 = new Panel();
             btnNew = new ReaLTaiizor.Controls.MaterialButton();
+            btnEdit = new ReaLTaiizor.Controls.MaterialButton();
+            btnDelete = new ReaLTaiizor.Controls.MaterialButton();
+            dataGridViewList = new DataGridView();
             imageList1 = new ImageList(components);
             tabControlRegister.SuspendLayout();
             tabPage1.SuspendLayout();
+            panel1.SuspendLayout();
             tabPage2.SuspendLayout();
+            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewList).BeginInit();
             SuspendLayout();
             // 
@@ -59,11 +63,11 @@
             tabControlRegister.SelectedIndex = 0;
             tabControlRegister.Size = new Size(799, 388);
             tabControlRegister.TabIndex = 0;
+            tabControlRegister.Enter += tabPageList_Enter;
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(btnCancel);
-            tabPage1.Controls.Add(btnSave);
+            tabPage1.Controls.Add(panel1);
             tabPage1.ImageKey = "form.png";
             tabPage1.Location = new Point(4, 31);
             tabPage1.Name = "tabPage1";
@@ -73,6 +77,16 @@
             tabPage1.Text = "Register";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(btnCancel);
+            panel1.Controls.Add(btnSave);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(3, 302);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(785, 48);
+            panel1.TabIndex = 2;
+            // 
             // btnCancel
             // 
             btnCancel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -81,7 +95,7 @@
             btnCancel.HighEmphasis = true;
             btnCancel.Icon = null;
             btnCancel.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            btnCancel.Location = new Point(549, 303);
+            btnCancel.Location = new Point(632, 6);
             btnCancel.Margin = new Padding(4, 6, 4, 6);
             btnCancel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             btnCancel.Name = "btnCancel";
@@ -103,7 +117,7 @@
             btnSave.HighEmphasis = true;
             btnSave.Icon = null;
             btnSave.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            btnSave.Location = new Point(715, 303);
+            btnSave.Location = new Point(717, 6);
             btnSave.Margin = new Padding(4, 6, 4, 6);
             btnSave.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             btnSave.Name = "btnSave";
@@ -118,10 +132,8 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(panel2);
             tabPage2.Controls.Add(dataGridViewList);
-            tabPage2.Controls.Add(btnDelete);
-            tabPage2.Controls.Add(btnEdit);
-            tabPage2.Controls.Add(btnNew);
             tabPage2.ImageKey = "search.png";
             tabPage2.Location = new Point(4, 31);
             tabPage2.Name = "tabPage2";
@@ -131,39 +143,38 @@
             tabPage2.Text = "List";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewList
+            // panel2
             // 
-            dataGridViewList.AllowUserToAddRows = false;
-            dataGridViewList.AllowUserToDeleteRows = false;
-            dataGridViewList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewList.Location = new Point(-1, 6);
-            dataGridViewList.Name = "dataGridViewList";
-            dataGridViewList.ReadOnly = true;
-            dataGridViewList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewList.Size = new Size(787, 291);
-            dataGridViewList.TabIndex = 3;
+            panel2.Controls.Add(btnNew);
+            panel2.Controls.Add(btnEdit);
+            panel2.Controls.Add(btnDelete);
+            panel2.Dock = DockStyle.Bottom;
+            panel2.Location = new Point(3, 306);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(785, 44);
+            panel2.TabIndex = 4;
             // 
-            // btnDelete
+            // btnNew
             // 
-            btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnDelete.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnDelete.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnDelete.Depth = 0;
-            btnDelete.HighEmphasis = true;
-            btnDelete.Icon = null;
-            btnDelete.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            btnDelete.Location = new Point(570, 311);
-            btnDelete.Margin = new Padding(4, 6, 4, 6);
-            btnDelete.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            btnDelete.Name = "btnDelete";
-            btnDelete.NoAccentTextColor = Color.Empty;
-            btnDelete.Size = new Size(73, 36);
-            btnDelete.TabIndex = 2;
-            btnDelete.Text = "Delete";
-            btnDelete.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnDelete.UseAccentColor = false;
-            btnDelete.UseVisualStyleBackColor = true;
-            btnDelete.Click += btnDelete_Click;
+            btnNew.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnNew.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnNew.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnNew.Depth = 0;
+            btnNew.HighEmphasis = true;
+            btnNew.Icon = null;
+            btnNew.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            btnNew.Location = new Point(717, 5);
+            btnNew.Margin = new Padding(4, 6, 4, 6);
+            btnNew.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            btnNew.Name = "btnNew";
+            btnNew.NoAccentTextColor = Color.Empty;
+            btnNew.Size = new Size(64, 36);
+            btnNew.TabIndex = 0;
+            btnNew.Text = "New";
+            btnNew.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnNew.UseAccentColor = false;
+            btnNew.UseVisualStyleBackColor = true;
+            btnNew.Click += btnNew_Click;
             // 
             // btnEdit
             // 
@@ -174,7 +185,7 @@
             btnEdit.HighEmphasis = true;
             btnEdit.Icon = null;
             btnEdit.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            btnEdit.Location = new Point(651, 311);
+            btnEdit.Location = new Point(645, 5);
             btnEdit.Margin = new Padding(4, 6, 4, 6);
             btnEdit.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             btnEdit.Name = "btnEdit";
@@ -187,27 +198,40 @@
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
             // 
-            // btnNew
+            // btnDelete
             // 
-            btnNew.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnNew.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnNew.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnNew.Depth = 0;
-            btnNew.HighEmphasis = true;
-            btnNew.Icon = null;
-            btnNew.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            btnNew.Location = new Point(723, 311);
-            btnNew.Margin = new Padding(4, 6, 4, 6);
-            btnNew.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            btnNew.Name = "btnNew";
-            btnNew.NoAccentTextColor = Color.Empty;
-            btnNew.Size = new Size(64, 36);
-            btnNew.TabIndex = 0;
-            btnNew.Text = "New";
-            btnNew.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnNew.UseAccentColor = false;
-            btnNew.UseVisualStyleBackColor = true;
-            btnNew.Click += btnNew_Click;
+            btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnDelete.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnDelete.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnDelete.Depth = 0;
+            btnDelete.HighEmphasis = true;
+            btnDelete.Icon = null;
+            btnDelete.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            btnDelete.Location = new Point(564, 5);
+            btnDelete.Margin = new Padding(4, 6, 4, 6);
+            btnDelete.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            btnDelete.Name = "btnDelete";
+            btnDelete.NoAccentTextColor = Color.Empty;
+            btnDelete.Size = new Size(73, 36);
+            btnDelete.TabIndex = 2;
+            btnDelete.Text = "Delete";
+            btnDelete.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnDelete.UseAccentColor = false;
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // dataGridViewList
+            // 
+            dataGridViewList.AllowUserToAddRows = false;
+            dataGridViewList.AllowUserToDeleteRows = false;
+            dataGridViewList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewList.Location = new Point(1, 0);
+            dataGridViewList.Name = "dataGridViewList";
+            dataGridViewList.ReadOnly = true;
+            dataGridViewList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewList.Size = new Size(787, 300);
+            dataGridViewList.TabIndex = 3;
+            dataGridViewList.DoubleClick += dataGridViewList_CellDoubleClick;
             // 
             // imageList1
             // 
@@ -231,23 +255,27 @@
             Text = "Form1";
             tabControlRegister.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewList).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private TabPage tabPage1;
         private ImageList imageList1;
         private ReaLTaiizor.Controls.MaterialButton btnSave;
         private ReaLTaiizor.Controls.MaterialButton btnCancel;
         private ReaLTaiizor.Controls.MaterialButton btnDelete;
         private ReaLTaiizor.Controls.MaterialButton btnEdit;
         private ReaLTaiizor.Controls.MaterialButton btnNew;
-        protected ReaLTaiizor.Controls.MaterialTabControl tabControlRegister;
         protected TabPage tabPage2;
         protected DataGridView dataGridViewList;
+        private Panel panel1;
+        private Panel panel2;
+        public ReaLTaiizor.Controls.MaterialTabControl tabControlRegister;
+        public TabPage tabPage1;
     }
 }

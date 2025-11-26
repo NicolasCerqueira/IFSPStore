@@ -10,10 +10,11 @@ namespace IFSPStore.Domain.Entities
         }
         public City(int id, string name, string state):base(id)
         {
+            Id = id;
             Name = name;
             State = state;
         }
-        public string Name { get; set; }
-        public string State { get; set; }
+        public string? Name { get; set; }
+        public string? State { get; set; }
     }
 }

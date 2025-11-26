@@ -10,8 +10,10 @@ namespace IFSPStore.Repository.Mapping
         {
             builder.ToTable("Sale");
             builder.HasKey(p => p.Id);
-            builder.Property(prop => prop.SaleDate);
-            builder.Property(prop => prop.SaleTotal);
+            builder.Property(prop => prop.SaleDate)
+                .IsRequired();
+            builder.Property(prop => prop.SaleTotal)
+                .IsRequired();
             builder.HasOne(prop => prop.Salesman);
             builder.HasOne(prop => prop.Customer);
             builder.HasMany(prop => prop.SaleItens)
@@ -25,9 +27,12 @@ namespace IFSPStore.Repository.Mapping
             {
                 builder.ToTable("SaleItem");
                 builder.HasKey(prop => prop.Id);
-                builder.Property(prop => prop.Quantity);
-                builder.Property(prop => prop.UnitPrice);
-                builder.Property(prop => prop.TotalPrice); 
+                builder.Property(prop => prop.Quantity)
+                    .IsRequired();
+                builder.Property(prop => prop.UnitPrice)
+                    .IsRequired();
+                builder.Property(prop => prop.TotalPrice)
+                    .IsRequired(); 
                 builder.HasOne(prop => prop.Product);
                 builder.HasOne(prop => prop.Sale)
                     .WithMany(prop => prop.SaleItens)

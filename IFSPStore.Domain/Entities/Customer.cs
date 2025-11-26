@@ -17,11 +17,11 @@ namespace IFSPStore.Domain.Entities
             City = city;
         }
 
-        public string Nome { get; set; }
-        public string Address { get; set; }
-        public string DocumentId { get; set; }
-        public string District { get; set; }
-        public City City { get; set; } //relacionamento
+        public string? Nome { get; set; }
+        public string? Address { get; set; }
+        public string? DocumentId { get; set; }
+        public string? District { get; set; }
+        public City? City { get; set; } //relacionamento
 
     }
 }

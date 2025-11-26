@@ -1,8 +1,10 @@
 ﻿using IFSPStore.App.Base;
+using IFSPStore.App.Models;
 using IFSPStore.Domain.Base;
 using IFSPStore.Domain.Entities;
 using IFSPStore.Service.Validator;
-namespace IFSPStore.App.Base
+
+namespace IFSPStore.App.Cadastros
 {
     public partial class CategoryForm : BaseForm
     {
@@ -15,9 +17,9 @@ namespace IFSPStore.App.Base
         }
         private void FormToObject(Category category)
         {
-            //category.Name = txtName.Text;
+            category.Name = txtName.Text;
         }
-        /*protected override void Save()
+        protected override void Save()
         {
             try {
                 if (IsEditMode)
@@ -34,7 +36,7 @@ namespace IFSPStore.App.Base
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message, @"IFSP Store", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }*/
+        }
 
         protected override void Delete(int id)
         {
@@ -47,7 +49,17 @@ namespace IFSPStore.App.Base
                 MessageBox.Show(ex.Message, @"IFSP Store", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        //protected override void
-    
+
+        protected override void CarregaGrid()
+        {
+            categories = _categoryService.Get<Category>().ToList();
+            dataGridViewList.DataSource = categories;
+            dataGridViewList.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+        protected override void GridToForm(DataGridViewRow? record)
+        {
+            txtId.Text = record?.Cells["Id"].Value.ToString();
+            txtName.Text = record?.Cells["Name"].Value.ToString();
+        }
     }
 }

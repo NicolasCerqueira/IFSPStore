@@ -62,6 +62,7 @@ namespace IFSPStore.Repository.Repository
 
         public void Update(TEntity obj)
         {
+            _mySqlContext.Entry(obj).State = EntityState.Modified;
             _mySqlContext.SaveChanges();
         }
     }

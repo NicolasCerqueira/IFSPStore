@@ -8,10 +8,10 @@ namespace IFSPStore.Service.Validator
         public CityValidator() 
         {
             RuleFor(c => c.Name)
-                .NotEmpty()
+                .NotEmpty().NotNull()
                 .WithMessage("Nome da cidade obrigatório");
             RuleFor(c => c.State)
-                .NotEmpty()
+                .NotEmpty().NotNull()
                 .WithMessage("Nome do estado obrigatótio")
                 .Length(2)
                 .WithMessage("Estado deve conter 2 caracteres");

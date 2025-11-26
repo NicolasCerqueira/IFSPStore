@@ -30,16 +30,19 @@
         {
             menuStrip1 = new MenuStrip();
             cadastrosToolStripMenuItem = new ToolStripMenuItem();
-            relatóriosToolStripMenuItem = new ToolStripMenuItem();
             userToolStripMenuItem = new ToolStripMenuItem();
             categoryToolStripMenuItem = new ToolStripMenuItem();
             productToolStripMenuItem = new ToolStripMenuItem();
             cityToolStripMenuItem = new ToolStripMenuItem();
             customerToolStripMenuItem = new ToolStripMenuItem();
             saleToolStripMenuItem = new ToolStripMenuItem();
+            relatóriosToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             closeToolStripMenuItem = new ToolStripMenuItem();
+            statusStrip1 = new StatusStrip();
+            lblUser = new ToolStripStatusLabel();
             menuStrip1.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -58,12 +61,6 @@
             cadastrosToolStripMenuItem.Size = new Size(61, 20);
             cadastrosToolStripMenuItem.Text = "Register";
             // 
-            // relatóriosToolStripMenuItem
-            // 
-            relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
-            relatóriosToolStripMenuItem.Size = new Size(54, 20);
-            relatóriosToolStripMenuItem.Text = "Report";
-            // 
             // userToolStripMenuItem
             // 
             userToolStripMenuItem.Name = "userToolStripMenuItem";
@@ -75,6 +72,7 @@
             categoryToolStripMenuItem.Name = "categoryToolStripMenuItem";
             categoryToolStripMenuItem.Size = new Size(180, 22);
             categoryToolStripMenuItem.Text = "Category";
+            categoryToolStripMenuItem.Click += categorytoolStripMenuItem_Click;
             // 
             // productToolStripMenuItem
             // 
@@ -100,6 +98,12 @@
             saleToolStripMenuItem.Size = new Size(180, 22);
             saleToolStripMenuItem.Text = "Sale";
             // 
+            // relatóriosToolStripMenuItem
+            // 
+            relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
+            relatóriosToolStripMenuItem.Size = new Size(54, 20);
+            relatóriosToolStripMenuItem.Text = "Report";
+            // 
             // helpToolStripMenuItem
             // 
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
@@ -112,19 +116,38 @@
             closeToolStripMenuItem.Size = new Size(48, 20);
             closeToolStripMenuItem.Text = "Close";
             // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { lblUser });
+            statusStrip1.Location = new Point(3, 425);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(794, 22);
+            statusStrip1.TabIndex = 3;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // lblUser
+            // 
+            lblUser.Name = "lblUser";
+            lblUser.Size = new Size(30, 17);
+            lblUser.Text = "User";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
             Text = "IFSP Store";
             WindowState = FormWindowState.Maximized;
+            FormClosing += MainForm_FormClosing;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -142,5 +165,7 @@
         private ToolStripMenuItem saleToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem closeToolStripMenuItem;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel lblUser;
     }
 }

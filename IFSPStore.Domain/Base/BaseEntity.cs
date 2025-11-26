@@ -6,11 +6,11 @@
         {
             
         }
-        public BaseEntity(TId id) 
+        protected BaseEntity(TId id) 
         {
             Id = id;
         }
-        public TId Id { get; set; }
+        public TId? Id { get; set; }
 
     }
 }

@@ -13,7 +13,7 @@ namespace IFSPStore.Domain.Entities
             Name = name;
             Description = description;
         }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string? Name { get; set; }
+        public string? Description { get; set; }
     }
 }
