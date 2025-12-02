@@ -138,7 +138,7 @@
             tabPage2.Location = new Point(4, 31);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(788, 353);
+            tabPage2.Size = new Size(790, 450);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "List";
             tabPage2.UseVisualStyleBackColor = true;
@@ -149,9 +149,9 @@
             panel2.Controls.Add(btnEdit);
             panel2.Controls.Add(btnDelete);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(3, 306);
+            panel2.Location = new Point(3, 403);
             panel2.Name = "panel2";
-            panel2.Size = new Size(782, 44);
+            panel2.Size = new Size(784, 44);
             panel2.TabIndex = 4;
             // 
             // btnNew
@@ -163,7 +163,7 @@
             btnNew.HighEmphasis = true;
             btnNew.Icon = null;
             btnNew.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            btnNew.Location = new Point(717, 5);
+            btnNew.Location = new Point(719, 5);
             btnNew.Margin = new Padding(4, 6, 4, 6);
             btnNew.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             btnNew.Name = "btnNew";
@@ -185,7 +185,7 @@
             btnEdit.HighEmphasis = true;
             btnEdit.Icon = null;
             btnEdit.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            btnEdit.Location = new Point(645, 5);
+            btnEdit.Location = new Point(647, 5);
             btnEdit.Margin = new Padding(4, 6, 4, 6);
             btnEdit.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             btnEdit.Name = "btnEdit";
@@ -207,7 +207,7 @@
             btnDelete.HighEmphasis = true;
             btnDelete.Icon = null;
             btnDelete.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            btnDelete.Location = new Point(564, 5);
+            btnDelete.Location = new Point(566, 5);
             btnDelete.Margin = new Padding(4, 6, 4, 6);
             btnDelete.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             btnDelete.Name = "btnDelete";
@@ -229,7 +229,7 @@
             dataGridViewList.Name = "dataGridViewList";
             dataGridViewList.ReadOnly = true;
             dataGridViewList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewList.Size = new Size(787, 300);
+            dataGridViewList.Size = new Size(787, 397);
             dataGridViewList.TabIndex = 3;
             dataGridViewList.DoubleClick += dataGridViewList_CellDoubleClick;
             // 

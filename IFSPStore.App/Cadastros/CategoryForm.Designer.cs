@@ -69,7 +69,7 @@
             txtName.SelectionLength = 0;
             txtName.SelectionStart = 0;
             txtName.ShortcutsEnabled = true;
-            txtName.Size = new Size(456, 48);
+            txtName.Size = new Size(690, 48);
             txtName.TabIndex = 3;
             txtName.TabStop = false;
             txtName.TextAlign = HorizontalAlignment.Left;
@@ -88,7 +88,7 @@
             txtId.HideSelection = true;
             txtId.Hint = "Id";
             txtId.LeadingIcon = null;
-            txtId.Location = new Point(468, 6);
+            txtId.Location = new Point(702, 6);
             txtId.MaxLength = 32767;
             txtId.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             txtId.Name = "txtId";

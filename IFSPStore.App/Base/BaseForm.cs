@@ -123,7 +123,7 @@ namespace IFSPStore.App.Base
 
         protected virtual void PopulateList()
         {
-
+            CarregaGrid();
         }
 
         #endregion

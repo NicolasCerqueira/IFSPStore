@@ -34,7 +34,7 @@ namespace IFSPStore.App
         {
             showForm<CategoryForm>();
         }
-        /*void productToolStripMenuItem_Click(object sender, EventArgs e)
+        void productToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showForm<ProductForm>();
         }
@@ -45,7 +45,15 @@ namespace IFSPStore.App
         private void saleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showForm<SaleForm>();
-        }*/
+        }
+        private void cityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showForm<CityForm>();
+        }
+        private void userToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showForm<UserForm>();
+        }
 
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

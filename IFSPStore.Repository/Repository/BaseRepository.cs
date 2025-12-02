@@ -31,7 +31,7 @@ namespace IFSPStore.Repository.Repository
 
         public void Insert(TEntity obj)
         {
-            _mySqlContext.Set<TEntity>().Add(Select(obj));
+            _mySqlContext.Set<TEntity>().Add(obj);
             _mySqlContext.SaveChanges();
         }
 
