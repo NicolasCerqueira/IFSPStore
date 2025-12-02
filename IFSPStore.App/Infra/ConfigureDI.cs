@@ -31,21 +31,21 @@ namespace IFSPStore.App.Infra
                 });
             // Repositories
             services.AddScoped<IBaseRepository<Category>, BaseRepository<Category>>();
-            //services.AddScoped<IBaseRepository<User>, BaseRepository<User>>();
-            /*services.AddScoped<IBaseRepository<City>, BaseRepository<City>>();
+            services.AddScoped<IBaseRepository<User>, BaseRepository<User>>();
+            services.AddScoped<IBaseRepository<City>, BaseRepository<City>>();
             services.AddScoped<IBaseRepository<Customer>, BaseRepository<Customer>>();
             services.AddScoped<IBaseRepository<Product>, BaseRepository<Product>>();
             services.AddScoped<IBaseRepository<Sale>, BaseRepository<Sale>>();
-            services.AddScoped<IBaseRepository<SaleItem>, BaseRepository<SaleItem>>();*/
+            services.AddScoped<IBaseRepository<SaleItem>, BaseRepository<SaleItem>>();
 
             // Services
             services.AddScoped<IBaseService<Category>, BaseService<Category>>();
-            //services.AddScoped<IBaseService<User>, BaseService<User>>();
-            /*services.AddScoped<IBaseService<City>, BaseService<City>>();
+            services.AddScoped<IBaseService<User>, BaseService<User>>();
+            services.AddScoped<IBaseService<City>, BaseService<City>>();
             services.AddScoped<IBaseService<Customer>, BaseService<Customer>>();
             services.AddScoped<IBaseService<Product>, BaseService<Product>>();
             services.AddScoped<IBaseService<Sale>, BaseService<Sale>>();
-            services.AddScoped<IBaseService<SaleItem>, BaseService<SaleItem>>();*/
+            services.AddScoped<IBaseService<SaleItem>, BaseService<SaleItem>>();
 
             //Formularios
             services.AddTransient<Login, Login>();
