@@ -36,7 +36,7 @@ namespace IFSPStore.App.Outros
         }
         private User? searchUser(string login, string password)
         {
-            checkValidUser();
+            //checkValidUser();
             var user = _userService.Get<User>().Where(u => u.Login == login && u.Password == password)
                 .FirstOrDefault();
             /*if (user != null)

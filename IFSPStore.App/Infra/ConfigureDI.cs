@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using IFSPStore.App.Cadastros;
 using IFSPStore.App.Models;
 using IFSPStore.App.Outros;
 using IFSPStore.Domain.Base;
@@ -31,7 +32,7 @@ namespace IFSPStore.App.Infra
                 });
             // Repositories
             services.AddScoped<IBaseRepository<Category>, BaseRepository<Category>>();
-            services.AddScoped<IBaseRepository<User>, BaseRepository<User>>();
+            //services.AddScoped<IBaseRepository<User>, BaseRepository<User>>();
             services.AddScoped<IBaseRepository<City>, BaseRepository<City>>();
             services.AddScoped<IBaseRepository<Customer>, BaseRepository<Customer>>();
             services.AddScoped<IBaseRepository<Product>, BaseRepository<Product>>();
@@ -40,7 +41,7 @@ namespace IFSPStore.App.Infra
 
             // Services
             services.AddScoped<IBaseService<Category>, BaseService<Category>>();
-            services.AddScoped<IBaseService<User>, BaseService<User>>();
+            //services.AddScoped<IBaseService<User>, BaseService<User>>();
             services.AddScoped<IBaseService<City>, BaseService<City>>();
             services.AddScoped<IBaseService<Customer>, BaseService<Customer>>();
             services.AddScoped<IBaseService<Product>, BaseService<Product>>();
@@ -49,7 +50,12 @@ namespace IFSPStore.App.Infra
 
             //Formularios
             services.AddTransient<Login, Login>();
-            services.AddTransient<Category, Category>();
+            services.AddTransient<CategoryForm, CategoryForm>();
+            services.AddTransient<CityForm, CityForm>();
+            services.AddTransient<CustomerForm, CustomerForm>();
+            services.AddTransient<ProductForm, ProductForm>();
+            services.AddTransient<SaleForm, SaleForm>();
+            services.AddTransient<UserForm, UserForm>();
 
             services.AddSingleton(
                 new MapperConfiguration(config => { config.CreateMap<Category, CategoryModel>(); },
