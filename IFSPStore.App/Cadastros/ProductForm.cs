@@ -17,6 +17,7 @@ namespace IFSPStore.App.Cadastros
             _productService = productService;
             _categoryService = categoryService;
             InitializeComponent();
+            loadCombo();
         }
         private void loadCombo()
         {

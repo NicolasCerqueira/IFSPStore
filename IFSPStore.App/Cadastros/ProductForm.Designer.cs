@@ -38,6 +38,10 @@
             tabPage1.SuspendLayout();
             SuspendLayout();
             // 
+            // tabPage2
+            // 
+            tabPage2.Size = new Size(790, 450);
+            // 
             // tabPage1
             // 
             tabPage1.Controls.Add(cboCategory);
@@ -63,6 +67,7 @@
             txtName.Depth = 0;
             txtName.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtName.HideSelection = true;
+            txtName.Hint = "Name";
             txtName.LeadingIcon = null;
             txtName.Location = new Point(6, 6);
             txtName.MaxLength = 32767;
@@ -79,7 +84,6 @@
             txtName.Size = new Size(597, 48);
             txtName.TabIndex = 3;
             txtName.TabStop = false;
-            txtName.Text = "Name";
             txtName.TextAlign = HorizontalAlignment.Left;
             txtName.TrailingIcon = null;
             txtName.UseSystemPasswordChar = false;
@@ -94,6 +98,7 @@
             txtId.Depth = 0;
             txtId.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtId.HideSelection = true;
+            txtId.Hint = "Id";
             txtId.LeadingIcon = null;
             txtId.Location = new Point(609, 6);
             txtId.MaxLength = 32767;
@@ -110,7 +115,6 @@
             txtId.Size = new Size(176, 48);
             txtId.TabIndex = 4;
             txtId.TabStop = false;
-            txtId.Text = "Id";
             txtId.TextAlign = HorizontalAlignment.Left;
             txtId.TrailingIcon = null;
             txtId.UseSystemPasswordChar = false;
@@ -125,6 +129,7 @@
             txtSaleUnit.Depth = 0;
             txtSaleUnit.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtSaleUnit.HideSelection = true;
+            txtSaleUnit.Hint = "SaleUnit";
             txtSaleUnit.LeadingIcon = null;
             txtSaleUnit.Location = new Point(262, 60);
             txtSaleUnit.MaxLength = 32767;
@@ -141,7 +146,6 @@
             txtSaleUnit.Size = new Size(341, 48);
             txtSaleUnit.TabIndex = 6;
             txtSaleUnit.TabStop = false;
-            txtSaleUnit.Text = "SaleUnit";
             txtSaleUnit.TextAlign = HorizontalAlignment.Left;
             txtSaleUnit.TrailingIcon = null;
             txtSaleUnit.UseSystemPasswordChar = false;
@@ -241,7 +245,7 @@
             cboCategory.DropDownHeight = 174;
             cboCategory.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCategory.DropDownWidth = 121;
-            cboCategory.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            cboCategory.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             cboCategory.ForeColor = Color.FromArgb(222, 0, 0, 0);
             cboCategory.FormattingEnabled = true;
             cboCategory.IntegralHeight = false;
@@ -258,7 +262,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(810, 562);
             Location = new Point(0, 0);
             Name = "ProductForm";
             Text = "ProductForm";

@@ -35,6 +35,10 @@
             tabPage1.SuspendLayout();
             SuspendLayout();
             // 
+            // tabPage2
+            // 
+            tabPage2.Size = new Size(790, 450);
+            // 
             // tabPage1
             // 
             tabPage1.Controls.Add(cboDistrict);
@@ -54,6 +58,7 @@
             txtName.Depth = 0;
             txtName.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtName.HideSelection = true;
+            txtName.Hint = "Name";
             txtName.LeadingIcon = null;
             txtName.Location = new Point(6, 6);
             txtName.MaxLength = 32767;
@@ -70,7 +75,6 @@
             txtName.Size = new Size(550, 48);
             txtName.TabIndex = 3;
             txtName.TabStop = false;
-            txtName.Text = "Name";
             txtName.TextAlign = HorizontalAlignment.Left;
             txtName.TrailingIcon = null;
             txtName.UseSystemPasswordChar = false;
@@ -85,6 +89,7 @@
             txtId.Depth = 0;
             txtId.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtId.HideSelection = true;
+            txtId.Hint = "Id";
             txtId.LeadingIcon = null;
             txtId.Location = new Point(562, 6);
             txtId.MaxLength = 32767;
@@ -101,7 +106,6 @@
             txtId.Size = new Size(96, 48);
             txtId.TabIndex = 4;
             txtId.TabStop = false;
-            txtId.Text = "Id";
             txtId.TextAlign = HorizontalAlignment.Left;
             txtId.TrailingIcon = null;
             txtId.UseSystemPasswordChar = false;
@@ -134,7 +138,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(806, 556);
             Location = new Point(0, 0);
             Name = "CityForm";
             Text = "CityForm";

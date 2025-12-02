@@ -61,7 +61,7 @@
             tabControlRegister.Multiline = true;
             tabControlRegister.Name = "tabControlRegister";
             tabControlRegister.SelectedIndex = 0;
-            tabControlRegister.Size = new Size(799, 388);
+            tabControlRegister.Size = new Size(798, 485);
             tabControlRegister.TabIndex = 0;
             tabControlRegister.Enter += tabPageList_Enter;
             // 
@@ -72,7 +72,7 @@
             tabPage1.Location = new Point(4, 31);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(791, 353);
+            tabPage1.Size = new Size(790, 450);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Register";
             tabPage1.UseVisualStyleBackColor = true;
@@ -82,9 +82,9 @@
             panel1.Controls.Add(btnCancel);
             panel1.Controls.Add(btnSave);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(3, 302);
+            panel1.Location = new Point(3, 399);
             panel1.Name = "panel1";
-            panel1.Size = new Size(785, 48);
+            panel1.Size = new Size(784, 48);
             panel1.TabIndex = 2;
             // 
             // btnCancel
@@ -117,7 +117,7 @@
             btnSave.HighEmphasis = true;
             btnSave.Icon = null;
             btnSave.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            btnSave.Location = new Point(717, 6);
+            btnSave.Location = new Point(716, 6);
             btnSave.Margin = new Padding(4, 6, 4, 6);
             btnSave.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             btnSave.Name = "btnSave";
@@ -138,7 +138,7 @@
             tabPage2.Location = new Point(4, 31);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(791, 353);
+            tabPage2.Size = new Size(788, 353);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "List";
             tabPage2.UseVisualStyleBackColor = true;
@@ -151,7 +151,7 @@
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(3, 306);
             panel2.Name = "panel2";
-            panel2.Size = new Size(785, 44);
+            panel2.Size = new Size(782, 44);
             panel2.TabIndex = 4;
             // 
             // btnNew
@@ -248,7 +248,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(805, 455);
+            ClientSize = new Size(807, 555);
             Controls.Add(tabControlRegister);
             DrawerTabControl = tabControlRegister;
             Name = "BaseForm";

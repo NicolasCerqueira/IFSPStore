@@ -37,6 +37,10 @@
             tabPage1.SuspendLayout();
             SuspendLayout();
             // 
+            // tabPage2
+            // 
+            tabPage2.Size = new Size(790, 450);
+            // 
             // tabPage1
             // 
             tabPage1.Controls.Add(cboCity);
@@ -60,6 +64,7 @@
             txtName.Depth = 0;
             txtName.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtName.HideSelection = true;
+            txtName.Hint = "Name";
             txtName.LeadingIcon = null;
             txtName.Location = new Point(6, 6);
             txtName.MaxLength = 32767;
@@ -76,7 +81,6 @@
             txtName.Size = new Size(564, 48);
             txtName.TabIndex = 3;
             txtName.TabStop = false;
-            txtName.Text = "Name";
             txtName.TextAlign = HorizontalAlignment.Left;
             txtName.TrailingIcon = null;
             txtName.UseSystemPasswordChar = false;
@@ -91,6 +95,7 @@
             txtId.Depth = 0;
             txtId.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtId.HideSelection = true;
+            txtId.Hint = "Id";
             txtId.LeadingIcon = null;
             txtId.Location = new Point(576, 6);
             txtId.MaxLength = 32767;
@@ -107,7 +112,6 @@
             txtId.Size = new Size(208, 48);
             txtId.TabIndex = 4;
             txtId.TabStop = false;
-            txtId.Text = "Id";
             txtId.TextAlign = HorizontalAlignment.Left;
             txtId.TrailingIcon = null;
             txtId.UseSystemPasswordChar = false;
@@ -122,6 +126,7 @@
             txtAdress.Depth = 0;
             txtAdress.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtAdress.HideSelection = true;
+            txtAdress.Hint = "Adress";
             txtAdress.LeadingIcon = null;
             txtAdress.Location = new Point(6, 60);
             txtAdress.MaxLength = 32767;
@@ -138,7 +143,6 @@
             txtAdress.Size = new Size(778, 48);
             txtAdress.TabIndex = 5;
             txtAdress.TabStop = false;
-            txtAdress.Text = "Adress";
             txtAdress.TextAlign = HorizontalAlignment.Left;
             txtAdress.TrailingIcon = null;
             txtAdress.UseSystemPasswordChar = false;
@@ -153,6 +157,7 @@
             txtDistrict.Depth = 0;
             txtDistrict.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtDistrict.HideSelection = true;
+            txtDistrict.Hint = "District";
             txtDistrict.LeadingIcon = null;
             txtDistrict.Location = new Point(6, 114);
             txtDistrict.MaxLength = 32767;
@@ -169,7 +174,6 @@
             txtDistrict.Size = new Size(778, 48);
             txtDistrict.TabIndex = 6;
             txtDistrict.TabStop = false;
-            txtDistrict.Text = "District";
             txtDistrict.TextAlign = HorizontalAlignment.Left;
             txtDistrict.TrailingIcon = null;
             txtDistrict.UseSystemPasswordChar = false;
@@ -201,7 +205,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(806, 558);
             Location = new Point(0, 0);
             Name = "CustomerForm";
             Text = "CustomerForm";
