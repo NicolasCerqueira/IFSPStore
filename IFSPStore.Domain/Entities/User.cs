@@ -11,6 +11,7 @@ namespace IFSPStore.Domain.Entities
         public User(int id, string name, string login, string password, string email, DateTime registerDate,
             DateTime loginDate, bool isActive) : base(id)
         {
+            Id = id;
             Name = name;
             Login = login;
             Password = password;
@@ -19,6 +20,7 @@ namespace IFSPStore.Domain.Entities
             LoginDate = loginDate;
             IsActive = isActive;
         }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
         public string Login { get; set; }
