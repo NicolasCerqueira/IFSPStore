@@ -17,22 +17,33 @@ namespace IFSPStore.App.Outros
 
         public Login()
         {
+            InitializeComponent();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             User? user = searchUser(txtUser.Text, txtPassword.Text);
+            if (user != null)
+            {
+                MainForm.User = user; 
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Usuário ou senha inválidos!");
+            }
         }
         private User? searchUser(string login, string password)
         {
             checkValidUser();
             var user = _userService.Get<User>().Where(u => u.Login == login && u.Password == password)
                 .FirstOrDefault();
-            if (user != null)
+            /*if (user != null)
             {
                 return null;
-            }
-            return user.Password != password ? null : user;
+            }*/
+            return user;
         }
         private void checkValidUser()
         {

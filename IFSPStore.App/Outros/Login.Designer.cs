@@ -44,6 +44,7 @@
             txtUser.Depth = 0;
             txtUser.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtUser.HideSelection = true;
+            txtUser.Hint = "User";
             txtUser.LeadingIcon = null;
             txtUser.Location = new Point(103, 98);
             txtUser.MaxLength = 32767;
@@ -60,7 +61,6 @@
             txtUser.Size = new Size(342, 48);
             txtUser.TabIndex = 0;
             txtUser.TabStop = false;
-            txtUser.Text = "User";
             txtUser.TextAlign = HorizontalAlignment.Left;
             txtUser.TrailingIcon = null;
             txtUser.UseSystemPasswordChar = false;
@@ -75,12 +75,13 @@
             txtPassword.Depth = 0;
             txtPassword.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtPassword.HideSelection = true;
+            txtPassword.Hint = "Password";
             txtPassword.LeadingIcon = null;
             txtPassword.Location = new Point(103, 162);
             txtPassword.MaxLength = 32767;
             txtPassword.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '\0';
+            txtPassword.PasswordChar = '●';
             txtPassword.PrefixSuffixText = null;
             txtPassword.ReadOnly = false;
             txtPassword.RightToLeft = RightToLeft.No;
@@ -91,10 +92,9 @@
             txtPassword.Size = new Size(342, 48);
             txtPassword.TabIndex = 1;
             txtPassword.TabStop = false;
-            txtPassword.Text = "Password";
             txtPassword.TextAlign = HorizontalAlignment.Left;
             txtPassword.TrailingIcon = null;
-            txtPassword.UseSystemPasswordChar = false;
+            txtPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
