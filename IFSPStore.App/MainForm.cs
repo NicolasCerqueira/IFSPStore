@@ -56,9 +56,9 @@ namespace IFSPStore.App
             }
         }
 
-        private void showForm<TForm>() where TForm : MaterialForm
+        private void showForm<TFormulario>() where TFormulario : MaterialForm
         {
-            var form = ConfigureDI.serviceProvider!.GetService<TForm>();
+            var form = ConfigureDI.serviceProvider!.GetService<TFormulario>();
             if (form != null && !form.IsDisposed)
             {
                 form.MdiParent = this;
