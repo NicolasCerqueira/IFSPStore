@@ -42,7 +42,7 @@ namespace IFSPStore.App.Cadastros
                         if (user != null)
                         {
                             PreencheObjeto(user);
-                            _userService.Update<User, User, UserValidator>(user);
+                            user = _userService.Update<User, User, UserValidator>(user);
                         }
                         else
                         {
@@ -57,7 +57,7 @@ namespace IFSPStore.App.Cadastros
                     PreencheObjeto(user);
                     _userService.Add<User, User, UserValidator>(user);
                 }
-
+                CarregaGrid();
                 tabControlRegister.SelectedIndex = 1; // Volta para a lista
             }
             catch (Exception ex)
