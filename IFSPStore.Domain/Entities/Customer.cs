@@ -8,7 +8,8 @@ namespace IFSPStore.Domain.Entities
         {
             
         }
-        public Customer(int id, string name, string address, string documentId, string district, City city) : base(id)
+        public Customer(int id, string name, string address, string documentId, string district, 
+            City city) : base(id)
         {
             Nome = name;
             Address = address;

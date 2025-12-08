@@ -33,16 +33,14 @@
             txtAdress = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             txtDistrict = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             cboCity = new ReaLTaiizor.Controls.MaterialComboBox();
+            txtDocument = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             tabControlRegister.SuspendLayout();
             tabPage1.SuspendLayout();
             SuspendLayout();
             // 
-            // tabPage2
-            // 
-            tabPage2.Size = new Size(790, 450);
-            // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(txtDocument);
             tabPage1.Controls.Add(cboCity);
             tabPage1.Controls.Add(txtDistrict);
             tabPage1.Controls.Add(txtAdress);
@@ -53,6 +51,7 @@
             tabPage1.Controls.SetChildIndex(txtAdress, 0);
             tabPage1.Controls.SetChildIndex(txtDistrict, 0);
             tabPage1.Controls.SetChildIndex(cboCity, 0);
+            tabPage1.Controls.SetChildIndex(txtDocument, 0);
             // 
             // txtName
             // 
@@ -193,13 +192,44 @@
             cboCity.Hint = "City";
             cboCity.IntegralHeight = false;
             cboCity.ItemHeight = 43;
-            cboCity.Location = new Point(6, 168);
+            cboCity.Location = new Point(6, 222);
             cboCity.MaxDropDownItems = 4;
             cboCity.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             cboCity.Name = "cboCity";
             cboCity.Size = new Size(778, 49);
             cboCity.StartIndex = 0;
             cboCity.TabIndex = 7;
+            // 
+            // txtDocument
+            // 
+            txtDocument.AnimateReadOnly = false;
+            txtDocument.AutoCompleteMode = AutoCompleteMode.None;
+            txtDocument.AutoCompleteSource = AutoCompleteSource.None;
+            txtDocument.BackgroundImageLayout = ImageLayout.None;
+            txtDocument.CharacterCasing = CharacterCasing.Normal;
+            txtDocument.Depth = 0;
+            txtDocument.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtDocument.HideSelection = true;
+            txtDocument.Hint = "Document";
+            txtDocument.LeadingIcon = null;
+            txtDocument.Location = new Point(6, 168);
+            txtDocument.MaxLength = 32767;
+            txtDocument.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            txtDocument.Name = "txtDocument";
+            txtDocument.PasswordChar = '\0';
+            txtDocument.PrefixSuffixText = null;
+            txtDocument.ReadOnly = false;
+            txtDocument.RightToLeft = RightToLeft.No;
+            txtDocument.SelectedText = "";
+            txtDocument.SelectionLength = 0;
+            txtDocument.SelectionStart = 0;
+            txtDocument.ShortcutsEnabled = true;
+            txtDocument.Size = new Size(777, 48);
+            txtDocument.TabIndex = 8;
+            txtDocument.TabStop = false;
+            txtDocument.TextAlign = HorizontalAlignment.Left;
+            txtDocument.TrailingIcon = null;
+            txtDocument.UseSystemPasswordChar = false;
             // 
             // CustomerForm
             // 
@@ -221,5 +251,6 @@
         private ReaLTaiizor.Controls.MaterialTextBoxEdit txtId;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit txtName;
         private ReaLTaiizor.Controls.MaterialComboBox cboCity;
+        private ReaLTaiizor.Controls.MaterialTextBoxEdit txtDocument;
     }
 }

@@ -31,6 +31,7 @@ namespace IFSPStore.App.Cadastros
             customer.Nome = txtName.Text;
             customer.Address = txtAdress.Text;
             customer.District = txtDistrict.Text;
+            customer.DocumentId = txtDocument.Text;
             if (int.TryParse(cboCity.SelectedValue?.ToString(), out var idCity))
                 {
                 //var city = _cityService.GetById<City>(idCategory);
@@ -48,7 +49,7 @@ namespace IFSPStore.App.Cadastros
                     {
                         var customer = _customerService.GetById<Customer>(id);
                         preencheObject(customer);
-                        _customerService.Add<Customer, Customer, CustomerValidator>(customer);
+                        _customerService.Update<Customer, Customer, CustomerValidator>(customer);
                     }
                 } else
                 {
@@ -77,7 +78,7 @@ namespace IFSPStore.App.Cadastros
         }
         protected override void CarregaGrid()
         {
-            customers = _customerService.Get<CustomerModel>().ToList();
+            customers = _customerService.Get<CustomerModel>(new[] { "City" }).ToList();
             dataGridViewList.DataSource = customers;
             dataGridViewList.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewList.Columns["IdCity"]!.Visible = false;
@@ -88,6 +89,7 @@ namespace IFSPStore.App.Cadastros
            txtName.Text = record.Cells["Name"].Value.ToString();
            txtAdress.Text = record.Cells["Address"].Value.ToString();
            txtDistrict.Text = record.Cells["District"].Value.ToString();
+           txtDocument.Text = record.Cells["Document"].Value?.ToString();
            cboCity.SelectedValue = record.Cells["IdCity"].Value;
         }
     }
