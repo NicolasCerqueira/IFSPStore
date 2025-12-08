@@ -252,6 +252,7 @@
             Controls.Add(tabControlRegister);
             DrawerTabControl = tabControlRegister;
             MaximizeBox = false;
+            MinimizeBox = false;
             Name = "BaseForm";
             StartPosition = FormStartPosition.CenterParent;
             tabControlRegister.ResumeLayout(false);

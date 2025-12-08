@@ -38,7 +38,7 @@ namespace IFSPStore.App.Cadastros
             cboUser.DataSource = _userService.Get<User>().ToList();
 
             cboCustomer.ValueMember = "Id";
-            cboCustomer.DisplayMember = "Name";
+            cboCustomer.DisplayMember = "Nome";
             cboCustomer.DataSource = _customerService.Get<Customer>().ToList();
 
             cboProduct.ValueMember = "Id";
@@ -194,9 +194,9 @@ namespace IFSPStore.App.Cadastros
                     saleItem.UnitPrice = vlUnit; // Atribui ao Preço
                 }
 
-                if (decimal.TryParse(txtAmount.Text, out var qtd))
+                if (decimal.TryParse(txtPrice.Text, out var qtd))
                 {
-                    saleItem.Quantity = qtd; 
+                    saleItem.Quantity = qtd;
                 }
 
                 saleItem.TotalPrice = saleItem.Quantity * saleItem.UnitPrice;
@@ -222,7 +222,7 @@ namespace IFSPStore.App.Cadastros
         private void CalculateTotalItem()
         {
             var convVlr = float.TryParse(txtSaleUnit.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out float vlUnitario);
-            var convQtd = int.TryParse(txtAmount.Text, out int quantidade);
+            var convQtd = int.TryParse(txtPrice.Text, out int quantidade);
             if (convVlr && convQtd)
             {
                 var valorTotal = quantidade * vlUnitario;
@@ -231,12 +231,49 @@ namespace IFSPStore.App.Cadastros
         }
         private void CalculateTotalSale()
         {
-            lblTotalPrice.Text = $@"Valor Total: {string.Format(CultureInfo.CurrentCulture, "{0:C2}", _saleItems.Sum(x => x.TotalPrice))}";
-            lblQtdItens.Text = $@"Qtd. Produtos: {_saleItems.Sum(x => x.Quantity)}";
+            decimal totalVenda = _saleItems.Sum(x => x.TotalPrice);
+            lblTotalPrice.Text = String.Format(System.Globalization.CultureInfo.CurrentCulture, "Valor Total: {0:C2}", totalVenda);
+
+            decimal totalQtd = _saleItems.Sum(x => x.Quantity);
+            lblQtdItens.Text = $"Qtd. Produtos: {totalQtd}";
         }
         private void txtQuantity_Leave(object sender, EventArgs e)
         {
             CalculateTotalItem();
+        }
+
+        private void cboProduct_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cboProduct.SelectedValue != null)
+            {
+                var product = (Product)cboProduct.SelectedItem;
+
+                txtSaleUnit.Text = product.SalesUnit;
+
+                txtPrice.Text = product.Price.ToString("N2");
+            }
+        }
+        private void CalcularTotalItem()
+        {
+            if (!decimal.TryParse(txtQuantity.Text, out decimal quantidade))
+            {
+                quantidade = 0;
+            }
+            string precoLimpo = txtPrice.Text.Replace("R$", "").Trim();
+
+            if (!decimal.TryParse(precoLimpo, System.Globalization.NumberStyles.Currency, System.Globalization.CultureInfo.CurrentCulture, out decimal preco))
+            {
+                preco = 0;
+            }
+
+            decimal total = quantidade * preco;
+
+            txtTotalPrice.Text = total.ToString("C2");
+        }
+
+        private void txtQuantity_Leave_1(object sender, EventArgs e)
+        {
+            CalcularTotalItem();
         }
     }
 }
