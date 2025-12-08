@@ -251,7 +251,9 @@
             ClientSize = new Size(807, 555);
             Controls.Add(tabControlRegister);
             DrawerTabControl = tabControlRegister;
+            MaximizeBox = false;
             Name = "BaseForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Form1";
             tabControlRegister.ResumeLayout(false);
             tabPage1.ResumeLayout(false);

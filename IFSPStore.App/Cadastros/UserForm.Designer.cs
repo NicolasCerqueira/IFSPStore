@@ -40,10 +40,6 @@
             tabPage1.SuspendLayout();
             SuspendLayout();
             // 
-            // tabPage2
-            // 
-            tabPage2.Size = new Size(790, 450);
-            // 
             // tabPage1
             // 
             tabPage1.Controls.Add(chkActive);
@@ -304,6 +300,7 @@
             ClientSize = new Size(804, 556);
             Location = new Point(0, 0);
             Name = "UserForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "UserForm";
             tabControlRegister.ResumeLayout(false);
             tabPage1.ResumeLayout(false);

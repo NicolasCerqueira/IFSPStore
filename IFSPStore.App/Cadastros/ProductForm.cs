@@ -18,6 +18,7 @@ namespace IFSPStore.App.Cadastros
             _categoryService = categoryService;
             InitializeComponent();
             loadCombo();
+            txtSaleDate.Text = DateTime.Now.ToString("d");
         }
         private void loadCombo()
         {

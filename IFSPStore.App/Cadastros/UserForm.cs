@@ -14,6 +14,7 @@ namespace IFSPStore.App.Cadastros
         {
             _userService = userService;
             InitializeComponent();
+            txtRegistrationDate.Text = DateTime.Now.ToString("g");
         }
         private void PreencheObjeto(User user)
         {

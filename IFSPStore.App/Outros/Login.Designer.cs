@@ -147,8 +147,11 @@
             Controls.Add(btnLogin);
             Controls.Add(txtPassword);
             Controls.Add(txtUser);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "Login";
-            Text = "Login";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Login IFSP Store";
             ResumeLayout(false);
             PerformLayout();
         }

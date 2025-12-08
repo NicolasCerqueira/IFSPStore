@@ -29,6 +29,7 @@ namespace IFSPStore.App.Cadastros
             loadCombo();
             CarregaGridItensSale();
             New();
+            txtSaleDate.Text = DateTime.Now.ToString("D");
         }
         private void loadCombo()
         {
