@@ -19,7 +19,6 @@ namespace IFSPStore.App.Cadastros
         {
             category.Name = txtName.Text;
             category.Description = txtDescription.Text;
-            category.Id = int.TryParse(txtId.Text, out int id) ? id : 0;
         }
         protected override void Save()
         {
@@ -38,6 +37,7 @@ namespace IFSPStore.App.Cadastros
                     category = _categoryService.Add<Category, Category, CategoryValidator>(category);
                 }
                 tabControlRegister.SelectedIndex = 1;
+                CarregaGrid();
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message, @"IFSP Store", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

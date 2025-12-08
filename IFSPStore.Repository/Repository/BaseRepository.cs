@@ -62,6 +62,17 @@ namespace IFSPStore.Repository.Repository
 
         public void Update(TEntity obj)
         {
+            // tive que modificar essa parte para funcionar o update
+            //antes estava so o saveChanges
+            var local = _mySqlContext.Set<TEntity>()
+                .Local
+                .FirstOrDefault(entry => entry.Id.Equals(obj.Id));
+
+            if (local != null)
+            {
+                _mySqlContext.Entry(local).State = EntityState.Detached;
+            }
+
             _mySqlContext.Entry(obj).State = EntityState.Modified;
             _mySqlContext.SaveChanges();
         }

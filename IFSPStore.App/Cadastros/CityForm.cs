@@ -39,6 +39,7 @@ namespace IFSPStore.App.Cadastros
 
                 }
                 tabControlRegister.SelectedIndex = 1;
+                CarregaGrid();
             }
             catch (Exception ex)
             {
@@ -66,9 +67,10 @@ namespace IFSPStore.App.Cadastros
         }
         protected override void loadList(DataGridViewRow? linha)
         {
+            //aqui deve estar do mesmo jeito que o nome das colunas do datagridview
             txtId.Text = linha?.Cells["Id"].Value.ToString();
             txtName.Text = linha?.Cells["Name"].Value.ToString();
-            cboDistrict.Text = linha?.Cells["District"].Value.ToString();
+            cboDistrict.Text = linha?.Cells["State"].Value.ToString();
         }
     }
 }
