@@ -48,7 +48,7 @@ namespace IFSPStore.App.Outros
         private void checkValidUser()
         {
             var users = _userService.Get<User>().ToList();
-            if (!users.Any())
+            if (users.Any())
             {
                 var user = new User
                 {

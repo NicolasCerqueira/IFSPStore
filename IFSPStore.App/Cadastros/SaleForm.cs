@@ -10,7 +10,7 @@ namespace IFSPStore.App.Cadastros
 {
     public partial class SaleForm : BaseForm
     {
-        private List<SaleItemModel> _saleItems;
+        private List<SaleItemModel> _saleItems = new List<SaleItemModel>();
         private readonly IBaseService<Sale> _saleService;
         private readonly IBaseService<User> _userService;
         private readonly IBaseService<Customer> _customerService;
