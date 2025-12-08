@@ -25,6 +25,7 @@ namespace IFSPStore.App.Cadastros
             _customerService = customerService;
             _productService = productServic;
             InitializeComponent();
+            _saleItems = new List<SaleItemModel>();
             loadCombo();
             CarregaGridItensSale();
             New();

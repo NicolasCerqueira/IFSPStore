@@ -7,7 +7,7 @@ namespace IFSPStore.Domain.Entities
     {
         public Sale()
         {
-            
+            SaleItens = new List<SaleItem>();
         }
         public Sale(int id, DateTime saleDate, decimal saleTotal, User salesman, Customer customer) : base(id)
         {

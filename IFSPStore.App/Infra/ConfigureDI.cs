@@ -64,7 +64,9 @@ namespace IFSPStore.App.Infra
                     config.CreateMap<Product, ProductModel>()
                         .ForMember(d => d.Category, d => d.MapFrom(x => x.Category!.Name))
                         .ForMember(d => d.IdCategory, d => d.MapFrom(x => x.CategoryId));
-                    config.CreateMap<Customer, CustomerModel>();
+                    config.CreateMap<Customer, CustomerModel>()
+                        .ForMember(d => d.City, d => d.MapFrom(x => x.City!.Name))
+                        .ForMember(d => d.IdCity, d => d.MapFrom(x => x.CityId));
                     config.CreateMap<City, CityModel>();
                     config.CreateMap<Sale, SaleModel>();
 

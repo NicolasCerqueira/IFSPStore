@@ -31,7 +31,7 @@ namespace IFSPStore.App.Cadastros
             customer.Nome = txtName.Text;
             customer.Address = txtAdress.Text;
             customer.District = txtDistrict.Text;
-            if (cboCity.SelectedValue != null && int.TryParse(cboCity.SelectedValue.ToString(), out var idCity))
+            if (int.TryParse(cboCity.SelectedValue?.ToString(), out var idCity))
                 {
                 //var city = _cityService.GetById<City>(idCategory);
                 customer.CityId = idCity;
