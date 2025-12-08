@@ -3,6 +3,7 @@ using IFSPStore.Domain.Entities;
 using IFSPStore.Service.Validator;
 using ReaLTaiizor.Forms;
 using System.Data;
+using System.Linq;
 
 namespace IFSPStore.App.Outros
 {
@@ -48,7 +49,7 @@ namespace IFSPStore.App.Outros
         private void checkValidUser()
         {
             var users = _userService.Get<User>().ToList();
-            if (users.Any())
+            if (!users.Any(u => u.Login == "admin"))
             {
                 var user = new User
                 {
@@ -57,6 +58,7 @@ namespace IFSPStore.App.Outros
                     Name = "Administrator do sistema",
                     IsActive = true,
                     RegisterDate = DateTime.Now,
+                    LoginDate = DateTime.Now,
                     Email = "admin@gmail.com",
                 };
                 _userService.Add<User, User, UserValidator>(user);
