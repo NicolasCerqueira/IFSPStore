@@ -254,7 +254,6 @@
             MaximizeBox = false;
             Name = "BaseForm";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Form1";
             tabControlRegister.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             panel1.ResumeLayout(false);

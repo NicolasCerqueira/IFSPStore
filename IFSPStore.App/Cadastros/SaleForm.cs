@@ -29,7 +29,7 @@ namespace IFSPStore.App.Cadastros
             loadCombo();
             CarregaGridItensSale();
             New();
-            txtSaleDate.Text = DateTime.Now.ToString("D");
+            txtSaleDate.Text = DateTime.Now.ToString("d");
         }
         private void loadCombo()
         {
@@ -71,7 +71,7 @@ namespace IFSPStore.App.Cadastros
                 {
                     Sale = sale,
                     Product = _productService.GetById<Product>(item.IdProduct),
-                    UnitPrice = item.UnitPrice,
+                    UnitPrice = item.UnitPrice.ToString(),
                     Quantity = item.Quantity,
                     TotalPrice = item.TotalPrice
                 };
@@ -127,13 +127,13 @@ namespace IFSPStore.App.Cadastros
         }
         protected override void CarregaGrid()
         {
-            var includes = new List<string>() { "Customer", "User" };
+            var includes = new List<string>() { "Customer", "Salesman" };
             sales = _saleService.Get<SaleModel>(includes).ToList();
             dataGridViewList.DataSource = sales;
             dataGridViewList.Columns["IdUser"]!.Visible = false;
             dataGridViewList.Columns["IdCustomer"]!.Visible = false;
-            dataGridViewList.Columns["TotalPrice"].DefaultCellStyle.Format = "C2";
-            dataGridViewList.Columns["TotalPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dataGridViewList.Columns["Price"].DefaultCellStyle.Format = "C2";
+            //dataGridViewList.Columns["TotalPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
         protected override void loadList(DataGridViewRow? linha)
         {
@@ -145,7 +145,7 @@ namespace IFSPStore.App.Cadastros
                ? dataC.ToString("g")
                : "";
 
-            var includes = new List<string>() { "Customer", "User", "Items", "Items.Product" };
+            var includes = new List<string>() { "Customer", "Salesman", "SaleItens", "SaleItens.Product" };
             var sale = _saleService.GetById<Sale>(id, includes);
             _saleItems = new List<SaleItemModel>();
             foreach (var item in sale.SaleItens)
@@ -189,13 +189,14 @@ namespace IFSPStore.App.Cadastros
                     saleItem.Product = product.Name;
                 }
 
-                if (float.TryParse(txtAmount.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out var vlUnit))
+                if (decimal.TryParse(txtSaleUnit.Text, NumberStyles.Currency, CultureInfo.CurrentCulture, out var vlUnit))
                 {
-                    saleItem.UnitPrice = (decimal)vlUnit;
+                    saleItem.UnitPrice = vlUnit; // Atribui ao Preço
                 }
-                if (int.TryParse(txtAmount.Text, out var qtd))
+
+                if (decimal.TryParse(txtAmount.Text, out var qtd))
                 {
-                    saleItem.UnitPrice = (decimal)qtd;
+                    saleItem.Quantity = qtd; 
                 }
 
                 saleItem.TotalPrice = saleItem.Quantity * saleItem.UnitPrice;

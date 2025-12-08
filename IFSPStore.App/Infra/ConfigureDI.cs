@@ -70,7 +70,11 @@ namespace IFSPStore.App.Infra
                         .ForMember(d => d.City, d => d.MapFrom(x => x.City!.Name))
                         .ForMember(d => d.IdCity, d => d.MapFrom(x => x.CityId));
                     config.CreateMap<City, CityModel>();
-                    config.CreateMap<Sale, SaleModel>();
+                    config.CreateMap<Sale, SaleModel>()
+                        .ForMember(d => d.User, d => d.MapFrom(x => x.Salesman)) // Mapeia nome do vendedor
+                        .ForMember(d => d.IdUser, d => d.MapFrom(x => x.Salesman!.Id))
+                        .ForMember(d => d.Customer, d => d.MapFrom(x => x.Customer)) // Mapeia nome do cliente
+                        .ForMember(d => d.IdCustomer, d => d.MapFrom(x => x.Customer!.Id));
 
                     config.CreateMap<User, User>();        
                     config.CreateMap<Category, Category>(); 
