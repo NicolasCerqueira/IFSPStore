@@ -42,6 +42,7 @@
             cboProduct = new ReaLTaiizor.Controls.MaterialComboBox();
             lblQtdItens = new ReaLTaiizor.Controls.MaterialLabel();
             lblTotalPrice = new ReaLTaiizor.Controls.MaterialLabel();
+            cboCategory = new ReaLTaiizor.Controls.MaterialComboBox();
             tabControlRegister.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBoxItens.SuspendLayout();
@@ -192,6 +193,7 @@
             // 
             // groupBoxItens
             // 
+            groupBoxItens.Controls.Add(cboCategory);
             groupBoxItens.Controls.Add(txtQuantity);
             groupBoxItens.Controls.Add(dataGridViewItens);
             groupBoxItens.Controls.Add(btnAdd);
@@ -236,6 +238,7 @@
             txtQuantity.TextAlign = HorizontalAlignment.Left;
             txtQuantity.TrailingIcon = null;
             txtQuantity.UseSystemPasswordChar = false;
+            txtQuantity.KeyPress += txtQuantity_KeyPress;
             txtQuantity.Leave += txtQuantity_Leave_1;
             // 
             // dataGridViewItens
@@ -412,6 +415,30 @@
             lblTotalPrice.TabIndex = 9;
             lblTotalPrice.Text = "Total Price: 0";
             // 
+            // cboCategory
+            // 
+            cboCategory.AutoResize = false;
+            cboCategory.BackColor = Color.FromArgb(255, 255, 255);
+            cboCategory.Depth = 0;
+            cboCategory.DrawMode = DrawMode.OwnerDrawVariable;
+            cboCategory.DropDownHeight = 174;
+            cboCategory.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboCategory.DropDownWidth = 121;
+            cboCategory.Enabled = false;
+            cboCategory.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            cboCategory.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            cboCategory.FormattingEnabled = true;
+            cboCategory.Hint = "Category";
+            cboCategory.IntegralHeight = false;
+            cboCategory.ItemHeight = 43;
+            cboCategory.Location = new Point(6, 75);
+            cboCategory.MaxDropDownItems = 4;
+            cboCategory.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            cboCategory.Name = "cboCategory";
+            cboCategory.Size = new Size(238, 49);
+            cboCategory.StartIndex = 0;
+            cboCategory.TabIndex = 7;
+            // 
             // SaleForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -445,5 +472,6 @@
         private ReaLTaiizor.Controls.MaterialLabel lblTotalPrice;
         private ReaLTaiizor.Controls.MaterialLabel lblQtdItens;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit txtQuantity;
+        private ReaLTaiizor.Controls.MaterialComboBox cboCategory;
     }
 }

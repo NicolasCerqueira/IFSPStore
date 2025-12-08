@@ -5,6 +5,7 @@ using IFSPStore.Domain.Entities;
 using IFSPStore.Service.Validator;
 using MySqlX.XDevAPI;
 using System.Globalization;
+using System.Xml.Linq;
 
 namespace IFSPStore.App.Cadastros
 {
@@ -64,6 +65,7 @@ namespace IFSPStore.App.Cadastros
                 sale.Customer = customer;
             }
             sale.SaleTotal = _saleItems.Sum(x => x.TotalPrice);
+            
 
             foreach (var item in _saleItems)
             {
@@ -79,6 +81,16 @@ namespace IFSPStore.App.Cadastros
                 sale.SaleItens.Add(itemSale);
             }
 
+        }
+        private void PreencheObjectProduct(Product product)
+        {
+           
+            if (int.TryParse(cboCategory.SelectedValue?.ToString(), out int idCategory))
+            {
+                // Use CategoryId para evitar o erro de "Tracking" do Entity Framework
+                product.CategoryId = idCategory;
+                product.Category = null;
+            }
         }
         protected override void New()
         {
@@ -182,28 +194,41 @@ namespace IFSPStore.App.Cadastros
             if (ItemValidator())
             {
                 var saleItem = new SaleItemModel();
-                if (int.TryParse(cboProduct.SelectedValue.ToString(), out var idProduct))
+                if (cboProduct.SelectedValue != null &&
+                    int.TryParse(cboProduct.SelectedValue.ToString(), out var idProduct))
                 {
                     var product = _productService.GetById<Product>(idProduct);
                     saleItem.IdProduct = product.Id;
                     saleItem.Product = product.Name;
+                    saleItem.SaleUnit = product.SalesUnit;
                 }
 
-                if (decimal.TryParse(txtSaleUnit.Text, NumberStyles.Currency, CultureInfo.CurrentCulture, out var vlUnit))
+                if (decimal.TryParse(txtQuantity.Text, out var quantity))
                 {
-                    saleItem.UnitPrice = vlUnit; // Atribui ao Preço
+                    saleItem.Quantity = quantity;
+                }
+                else
+                {
+                    saleItem.Quantity = 1;
                 }
 
-                if (decimal.TryParse(txtPrice.Text, out var qtd))
+                string precoLimpo = txtPrice.Text.Replace("R$", "").Trim();
+                if (decimal.TryParse(precoLimpo, System.Globalization.NumberStyles.Currency, System.Globalization.CultureInfo.CurrentCulture, out var price))
                 {
-                    saleItem.Quantity = qtd;
+                    saleItem.UnitPrice = price;
                 }
 
                 saleItem.TotalPrice = saleItem.Quantity * saleItem.UnitPrice;
 
                 _saleItems.Add(saleItem);
-                CalculateTotalSale();
+
                 CarregaGridItensSale();
+                CalculateTotalSale();
+
+                txtQuantity.Text = "";
+                txtPrice.Text = "";
+                txtTotalPrice.Text = "";
+                txtSaleUnit.Text = "";
             }
         }
         private bool ItemValidator()
@@ -251,6 +276,8 @@ namespace IFSPStore.App.Cadastros
                 txtSaleUnit.Text = product.SalesUnit;
 
                 txtPrice.Text = product.Price.ToString("N2");
+
+                //txtCategory.Text = product.Category.Name;
             }
         }
         private void CalcularTotalItem()
@@ -274,6 +301,15 @@ namespace IFSPStore.App.Cadastros
         private void txtQuantity_Leave_1(object sender, EventArgs e)
         {
             CalcularTotalItem();
+        }
+
+        private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Se for letra ou símbolo não escreve nada
+                e.Handled = true;
+            }
         }
     }
 }

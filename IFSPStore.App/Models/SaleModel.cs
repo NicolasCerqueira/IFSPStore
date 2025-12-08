@@ -26,6 +26,6 @@ namespace IFSPStore.App.Models
         public decimal UnitPrice { get; set; }
         public decimal TotalPrice { get; set; }
         public int IdProduct { get; set; }
-        public string SaleUnit { get; set; }
+        public string? SaleUnit { get; set; }
     }
 }
