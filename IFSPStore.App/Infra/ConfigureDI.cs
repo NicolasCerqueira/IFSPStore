@@ -64,7 +64,16 @@ namespace IFSPStore.App.Infra
                     config.CreateMap<Product, ProductModel>();
                     config.CreateMap<Customer, CustomerModel>();
                     config.CreateMap<City, CityModel>();
-                    config.CreateMap<Sale, SaleModel>(); ; },
+                    config.CreateMap<Sale, SaleModel>();
+
+                    config.CreateMap<User, User>();        
+                    config.CreateMap<Category, Category>(); 
+                    config.CreateMap<Product, Product>();   
+                    config.CreateMap<Customer, Customer>(); 
+                    config.CreateMap<City, City>();         
+                    config.CreateMap<Sale, Sale>();         
+                    config.CreateMap<SaleItem, SaleItem>();
+                },
                 NullLoggerFactory.Instance).CreateMapper());
             serviceProvider = services.BuildServiceProvider();
         }

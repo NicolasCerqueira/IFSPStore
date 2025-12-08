@@ -22,6 +22,11 @@ namespace IFSPStore.App.Cadastros
             user.Login = txtLogin.Text;
             user.Password = txtPassword.Text;
             user.IsActive = chkActive.Checked;
+            if (user.Id == 0)
+            {
+                user.RegisterDate = DateTime.Now;
+                user.LoginDate = DateTime.Now; // Valor inicial
+            }
         }
 
         protected override void Save()
@@ -30,22 +35,30 @@ namespace IFSPStore.App.Cadastros
             {
                 if (IsEditMode)
                 {
+                    // MODO EDIÇÃO
                     if (int.TryParse(txtId.Text, out var id))
                     {
                         var user = _userService.GetById<User>(id);
-                        PreencheObjeto(user);
-                        user = _userService.Update<User, User, UserValidator>(user);
+                        if (user != null)
+                        {
+                            PreencheObjeto(user);
+                            _userService.Update<User, User, UserValidator>(user);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Usuário não encontrado no banco de dados.");
+                        }
                     }
                 }
                 else
                 {
+                    // MODO NOVO
                     var user = new User();
                     PreencheObjeto(user);
                     _userService.Add<User, User, UserValidator>(user);
-
                 }
 
-                tabControlRegister.SelectedIndex = 1;
+                tabControlRegister.SelectedIndex = 1; // Volta para a lista
             }
             catch (Exception ex)
             {
@@ -82,13 +95,28 @@ namespace IFSPStore.App.Cadastros
             txtPassword.Text = linha?.Cells["Password"].Value.ToString();
             chkActive.Checked = (bool)(linha?.Cells["IsActive"].Value ?? false);
 
-            txtRegistrationDate.Text = DateTime.TryParse(linha?.Cells["DataCadastro"].Value.ToString(), out var dataC)
+            txtRegistrationDate.Text = DateTime.TryParse(linha?.Cells["RegisterDate"].Value.ToString(), out var dataC)
                 ? dataC.ToString("g")
                 : "";
 
-            txtLastLogin.Text = DateTime.TryParse(linha?.Cells["DataLogin"].Value.ToString(), out var dataL)
+            txtLastLogin.Text = DateTime.TryParse(linha?.Cells["LoginDate"].Value.ToString(), out var dataL)
                 ? dataL.ToString("g")
                 : "";
+        }
+        protected override void GridToForm(DataGridViewRow? row)
+        {
+            if (row != null)
+            {
+                txtId.Text = row.Cells["Id"].Value.ToString();
+                txtName.Text = row.Cells["Name"].Value.ToString();
+                txtEmail.Text = row.Cells["Email"].Value.ToString();
+                txtLogin.Text = row.Cells["login"].Value.ToString();
+
+                if (row.Cells["IsActive"].Value != null)
+                {
+                    chkActive.Checked = (bool)row.Cells["IsActive"].Value;
+                }
+            }
         }
     }
 }

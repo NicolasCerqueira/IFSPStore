@@ -8,8 +8,8 @@ namespace IFSPStore.App.Cadastros
 {
     public partial class CategoryForm : BaseForm
     {
-        private IBaseService<Category> _categoryService;
-        private List<Category> categories;
+        private readonly IBaseService<Category> _categoryService;
+        private List<CategoryModel>? categories;
         public CategoryForm(IBaseService<Category> categoryService)
         {
             _categoryService = categoryService;
@@ -31,7 +31,9 @@ namespace IFSPStore.App.Cadastros
                         CategoryValidator>(category);
                 } else
                 {
-
+                    var category = new Category();
+                    FormToObject(category);
+                    category = _categoryService.Add<Category, Category, CategoryValidator>(category);
                 }
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message, @"IFSP Store", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -52,9 +54,17 @@ namespace IFSPStore.App.Cadastros
 
         protected override void CarregaGrid()
         {
-            categories = _categoryService.Get<Category>().ToList();
-            dataGridViewList.DataSource = categories;
-            dataGridViewList.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            try
+            {
+                categories = _categoryService.Get<CategoryModel>().ToList();
+                dataGridViewList.DataSource = categories;
+                dataGridViewList.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "IFSP Store", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         protected override void GridToForm(DataGridViewRow? record)
         {
