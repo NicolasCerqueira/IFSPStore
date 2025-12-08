@@ -22,7 +22,9 @@ namespace IFSPStore.Repository.Mapping
             builder.Property(prop => prop.District)
                 .IsRequired()
                 .HasMaxLength(100);
-            builder.HasOne(prop => prop.City);
+            builder.HasOne(prop => prop.City)
+                .WithMany()
+                .HasForeignKey(prop => prop.CityId);
         }
     }
 }

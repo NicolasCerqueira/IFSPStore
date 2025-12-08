@@ -64,6 +64,7 @@ namespace IFSPStore.Repository.Repository
         {
             // tive que modificar essa parte para funcionar o update
             //antes estava so o saveChanges
+            _mySqlContext.ChangeTracker.Clear();
             var local = _mySqlContext.Set<TEntity>()
                 .Local
                 .FirstOrDefault(entry => entry.Id.Equals(obj.Id));

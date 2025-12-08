@@ -73,6 +73,7 @@ namespace IFSPStore.App.Cadastros
         {
             txtId.Text = record?.Cells["Id"].Value.ToString();
             txtName.Text = record?.Cells["Name"].Value.ToString();
+            txtDescription.Text = record?.Cells["Description"].Value.ToString();
         }
     }
 }

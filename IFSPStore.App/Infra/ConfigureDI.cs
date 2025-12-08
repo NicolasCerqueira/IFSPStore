@@ -61,7 +61,9 @@ namespace IFSPStore.App.Infra
                 new MapperConfiguration(config => {
                     config.CreateMap<Category, CategoryModel>();
                     config.CreateMap<User, UserModel>();
-                    config.CreateMap<Product, ProductModel>();
+                    config.CreateMap<Product, ProductModel>()
+                        .ForMember(d => d.Category, d => d.MapFrom(x => x.Category!.Name))
+                        .ForMember(d => d.IdCategory, d => d.MapFrom(x => x.CategoryId));
                     config.CreateMap<Customer, CustomerModel>();
                     config.CreateMap<City, CityModel>();
                     config.CreateMap<Sale, SaleModel>();

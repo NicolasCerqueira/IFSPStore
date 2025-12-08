@@ -18,8 +18,8 @@ namespace IFSPStore.Service.Validator
             RuleFor(c => c.District)
                 .NotEmpty().NotNull()
                 .WithMessage("Por favor informe o bairro.");
-            RuleFor(c => c.City)
-                .NotEmpty().NotNull()
+            RuleFor(c => c.CityId)
+                .GreaterThan(0)
                 .WithMessage("Por favor informe a cidade.");
 
         }

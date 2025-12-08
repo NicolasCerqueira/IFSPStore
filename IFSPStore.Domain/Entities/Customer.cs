@@ -21,6 +21,7 @@ namespace IFSPStore.Domain.Entities
         public string? Address { get; set; }
         public string? DocumentId { get; set; }
         public string? District { get; set; }
+        public int CityId { get; set; }
         public City? City { get; set; } //relacionamento
 
     }

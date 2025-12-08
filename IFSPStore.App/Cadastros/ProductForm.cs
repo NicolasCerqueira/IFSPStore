@@ -22,16 +22,16 @@ namespace IFSPStore.App.Cadastros
         private void loadCombo()
         {
             cboCategory.ValueMember = "Id";
-            cboCategory.DisplayMember = "Nome";
+            cboCategory.DisplayMember = "Name";
             cboCategory.DataSource = _categoryService.Get<CategoryModel>().ToList();
         }
 
         private void PreencheObject(Product product)
         {
             product.Name = txtName.Text;
-            if (float.TryParse(txtPrice.Text, out var price))
+            if (decimal.TryParse(txtPrice.Text, System.Globalization.NumberStyles.Currency, System.Globalization.CultureInfo.CurrentCulture, out decimal price))
             {
-                product.Price = (decimal)price;
+                product.Price = price;
             }
 
             if (DateTime.TryParse(txtSaleDate.Text, out var dataCompra))
@@ -39,11 +39,19 @@ namespace IFSPStore.App.Cadastros
                 product.PurchaseDate = dataCompra;
             }
             product.SalesUnit = txtSaleUnit.Text;
-
-            if (int.TryParse(cboCategory.SelectedValue.ToString(), out int idCategory))
+            if (int.TryParse(txtQuantity.Text, out var quantity))
             {
-                var category = _categoryService.GetById<Category>(idCategory);
-                product.Category = category;
+                product.Quantity = quantity;
+            }
+
+            if (cboCategory.SelectedValue != null && 
+                int.TryParse(cboCategory.SelectedValue.ToString(), out int idCategory))
+            {
+                //var category = _categoryService.GetById<Category>(idCategory);
+                //product.Category = category;
+                product.CategoryId = idCategory;
+                product.Category = null;
+
             }
         }
 
@@ -67,7 +75,7 @@ namespace IFSPStore.App.Cadastros
                     _productService.Add<Product, Product, ProductValidator>(product);
 
                 }
-
+                CarregaGrid();
                 tabControlRegister.SelectedIndex = 1;
             }
             catch (Exception ex)
@@ -99,10 +107,10 @@ namespace IFSPStore.App.Cadastros
         {
             txtId.Text = linha?.Cells["Id"].Value.ToString();
             txtName.Text = linha?.Cells["Name"].Value.ToString();
-            txtSaleUnit.Text = linha?.Cells["SaleUnit"].Value.ToString();
+            txtSaleUnit.Text = linha?.Cells["SalesUnit"].Value.ToString();
             txtPrice.Text = linha?.Cells["Price"].Value.ToString();
-            cboCategory.SelectedValue = linha?.Cells["IdCategory"].Value;
-            txtSaleDate.Text = DateTime.TryParse(linha?.Cells["SaleDate"].Value.ToString(), out var dataC)
+            cboCategory.SelectedValue = linha?.Cells["Category"].Value;
+            txtSaleDate.Text = DateTime.TryParse(linha?.Cells["PurchaseDate"].Value.ToString(), out var dataC)
                ? dataC.ToString("g")
                : "";
 

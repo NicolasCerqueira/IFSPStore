@@ -23,7 +23,7 @@ namespace IFSPStore.App.Cadastros
         private void loadCombo()
         {
             cboCity.ValueMember = "Id";
-            cboCity.DisplayMember = "NameDistrict";
+            cboCity.DisplayMember = "Name";
             cboCity.DataSource = _cityService.Get<CityModel>().ToList();
         }
         private void preencheObject(Customer customer)
@@ -31,11 +31,12 @@ namespace IFSPStore.App.Cadastros
             customer.Nome = txtName.Text;
             customer.Address = txtAdress.Text;
             customer.District = txtDistrict.Text;
-            if (int.TryParse(cboCity.SelectedValue.ToString(), out var idCategory))
+            if (cboCity.SelectedValue != null && int.TryParse(cboCity.SelectedValue.ToString(), out var idCity))
                 {
-                    var city = _cityService.GetById<City>(idCategory);
-                    customer.City = city;
-            }
+                //var city = _cityService.GetById<City>(idCategory);
+                customer.CityId = idCity;
+                customer.City = null;
+                }
         }
         protected override void Save()
         {
@@ -45,7 +46,7 @@ namespace IFSPStore.App.Cadastros
                 {
                     if (int.TryParse(txtId.Text, out var id))
                     {
-                        var customer = _cityService.GetById<Customer>(id);
+                        var customer = _customerService.GetById<Customer>(id);
                         preencheObject(customer);
                         _customerService.Add<Customer, Customer, CustomerValidator>(customer);
                     }
@@ -55,6 +56,7 @@ namespace IFSPStore.App.Cadastros
                     preencheObject(customer);
                     _customerService.Add<Customer, Customer, CustomerValidator>(customer);
                 }
+                CarregaGrid();
                 tabControlRegister.SelectedIndex = 1;
             }
             catch (Exception ex)

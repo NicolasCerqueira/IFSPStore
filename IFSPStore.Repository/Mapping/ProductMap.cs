@@ -19,6 +19,7 @@ namespace IFSPStore.Repository.Mapping
                 .HasMaxLength(10);
             builder.HasOne(prop => prop.Category)
                 .WithMany()
+                .HasForeignKey(prop => prop.CategoryId)
                 .HasConstraintName("nome_chave_estrangeira"); // relacionamento
         }
     }

@@ -34,16 +34,14 @@
             txtPrice = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             txtSaleDate = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             cboCategory = new ReaLTaiizor.Controls.MaterialComboBox();
+            txtQuantity = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             tabControlRegister.SuspendLayout();
             tabPage1.SuspendLayout();
             SuspendLayout();
             // 
-            // tabPage2
-            // 
-            tabPage2.Size = new Size(790, 450);
-            // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(txtQuantity);
             tabPage1.Controls.Add(cboCategory);
             tabPage1.Controls.Add(txtSaleDate);
             tabPage1.Controls.Add(txtPrice);
@@ -56,6 +54,7 @@
             tabPage1.Controls.SetChildIndex(txtPrice, 0);
             tabPage1.Controls.SetChildIndex(txtSaleDate, 0);
             tabPage1.Controls.SetChildIndex(cboCategory, 0);
+            tabPage1.Controls.SetChildIndex(txtQuantity, 0);
             // 
             // txtName
             // 
@@ -166,7 +165,7 @@
             txtPrice.InsertKeyMode = InsertKeyMode.Default;
             txtPrice.LeadingIcon = null;
             txtPrice.Location = new Point(6, 60);
-            txtPrice.Mask = "999.999.99";
+            txtPrice.Mask = "999999.99";
             txtPrice.MaxLength = 32767;
             txtPrice.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             txtPrice.Name = "txtPrice";
@@ -186,7 +185,7 @@
             txtPrice.SkipLiterals = true;
             txtPrice.TabIndex = 7;
             txtPrice.TabStop = false;
-            txtPrice.Text = "   ,   ,";
+            txtPrice.Text = "      ,";
             txtPrice.TextAlign = HorizontalAlignment.Left;
             txtPrice.TextMaskFormat = MaskFormat.IncludeLiterals;
             txtPrice.TrailingIcon = null;
@@ -250,13 +249,44 @@
             cboCategory.FormattingEnabled = true;
             cboCategory.IntegralHeight = false;
             cboCategory.ItemHeight = 43;
-            cboCategory.Location = new Point(6, 114);
+            cboCategory.Location = new Point(262, 113);
             cboCategory.MaxDropDownItems = 4;
             cboCategory.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             cboCategory.Name = "cboCategory";
-            cboCategory.Size = new Size(778, 49);
+            cboCategory.Size = new Size(519, 49);
             cboCategory.StartIndex = 0;
             cboCategory.TabIndex = 9;
+            // 
+            // txtQuantity
+            // 
+            txtQuantity.AnimateReadOnly = false;
+            txtQuantity.AutoCompleteMode = AutoCompleteMode.None;
+            txtQuantity.AutoCompleteSource = AutoCompleteSource.None;
+            txtQuantity.BackgroundImageLayout = ImageLayout.None;
+            txtQuantity.CharacterCasing = CharacterCasing.Normal;
+            txtQuantity.Depth = 0;
+            txtQuantity.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtQuantity.HideSelection = true;
+            txtQuantity.Hint = "Quantity";
+            txtQuantity.LeadingIcon = null;
+            txtQuantity.Location = new Point(6, 114);
+            txtQuantity.MaxLength = 32767;
+            txtQuantity.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            txtQuantity.Name = "txtQuantity";
+            txtQuantity.PasswordChar = '\0';
+            txtQuantity.PrefixSuffixText = null;
+            txtQuantity.ReadOnly = false;
+            txtQuantity.RightToLeft = RightToLeft.No;
+            txtQuantity.SelectedText = "";
+            txtQuantity.SelectionLength = 0;
+            txtQuantity.SelectionStart = 0;
+            txtQuantity.ShortcutsEnabled = true;
+            txtQuantity.Size = new Size(250, 48);
+            txtQuantity.TabIndex = 11;
+            txtQuantity.TabStop = false;
+            txtQuantity.TextAlign = HorizontalAlignment.Left;
+            txtQuantity.TrailingIcon = null;
+            txtQuantity.UseSystemPasswordChar = false;
             // 
             // ProductForm
             // 
@@ -279,5 +309,6 @@
         private ReaLTaiizor.Controls.MaterialTextBoxEdit txtId;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit txtName;
         private ReaLTaiizor.Controls.MaterialComboBox cboCategory;
+        private ReaLTaiizor.Controls.MaterialTextBoxEdit txtQuantity;
     }
 }
