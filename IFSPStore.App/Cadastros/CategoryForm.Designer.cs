@@ -30,20 +30,19 @@
         {
             txtName = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             txtId = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
+            txtDescription = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             tabControlRegister.SuspendLayout();
             tabPage1.SuspendLayout();
             SuspendLayout();
             // 
-            // tabPage2
-            // 
-            tabPage2.Size = new Size(790, 450);
-            // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(txtDescription);
             tabPage1.Controls.Add(txtId);
             tabPage1.Controls.Add(txtName);
             tabPage1.Controls.SetChildIndex(txtName, 0);
             tabPage1.Controls.SetChildIndex(txtId, 0);
+            tabPage1.Controls.SetChildIndex(txtDescription, 0);
             // 
             // txtName
             // 
@@ -107,6 +106,37 @@
             txtId.TrailingIcon = null;
             txtId.UseSystemPasswordChar = false;
             // 
+            // txtDescription
+            // 
+            txtDescription.AnimateReadOnly = false;
+            txtDescription.AutoCompleteMode = AutoCompleteMode.None;
+            txtDescription.AutoCompleteSource = AutoCompleteSource.None;
+            txtDescription.BackgroundImageLayout = ImageLayout.None;
+            txtDescription.CharacterCasing = CharacterCasing.Normal;
+            txtDescription.Depth = 0;
+            txtDescription.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtDescription.HideSelection = true;
+            txtDescription.Hint = "Description";
+            txtDescription.LeadingIcon = null;
+            txtDescription.Location = new Point(6, 60);
+            txtDescription.MaxLength = 32767;
+            txtDescription.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            txtDescription.Name = "txtDescription";
+            txtDescription.PasswordChar = '\0';
+            txtDescription.PrefixSuffixText = null;
+            txtDescription.ReadOnly = false;
+            txtDescription.RightToLeft = RightToLeft.No;
+            txtDescription.SelectedText = "";
+            txtDescription.SelectionLength = 0;
+            txtDescription.SelectionStart = 0;
+            txtDescription.ShortcutsEnabled = true;
+            txtDescription.Size = new Size(778, 48);
+            txtDescription.TabIndex = 5;
+            txtDescription.TabStop = false;
+            txtDescription.TextAlign = HorizontalAlignment.Left;
+            txtDescription.TrailingIcon = null;
+            txtDescription.UseSystemPasswordChar = false;
+            // 
             // CategoryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -124,5 +154,6 @@
 
         private ReaLTaiizor.Controls.MaterialTextBoxEdit txtId;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit txtName;
+        private ReaLTaiizor.Controls.MaterialTextBoxEdit txtDescription;
     }
 }
