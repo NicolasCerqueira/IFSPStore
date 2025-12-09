@@ -72,6 +72,11 @@ namespace IFSPStore.App
             }
         }
 
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showForm<HelpForm>();
+        }
+
         private void showForm<TFormulario>() where TFormulario : MaterialForm
         {
             //fecha todos os forms abertos dentro do mdi
