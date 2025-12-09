@@ -14,11 +14,13 @@ namespace IFSPStore.App.Outros
         {
             _userService = userService;
             InitializeComponent();
+            this.AcceptButton = btnLogin;
         }
 
         public Login()
         {
             InitializeComponent();
+            this.AcceptButton = btnLogin;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

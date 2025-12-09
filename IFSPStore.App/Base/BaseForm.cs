@@ -132,5 +132,25 @@ namespace IFSPStore.App.Base
         {
             Edit();
         }
+        private void tabControlRegister_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControlRegister.SelectedIndex == 0) 
+            {
+                this.AcceptButton = btnSave;
+            }
+            else 
+            {
+                this.AcceptButton = btnNew;
+            }
+        }
+
+        private void dataGridViewList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                btnDelete_Click(sender, e);
+                e.Handled = true;
+            }
+        }
     }
 }

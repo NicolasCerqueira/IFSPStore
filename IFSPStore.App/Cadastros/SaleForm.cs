@@ -84,7 +84,7 @@ namespace IFSPStore.App.Cadastros
                     Sale = sale,
                     ProductId = item.IdProduct,
                     Product = null,
-
+                    
                     UnitPrice = item.UnitPrice,
                     Quantity = item.Quantity,
                     TotalPrice = item.TotalPrice
@@ -92,6 +92,8 @@ namespace IFSPStore.App.Cadastros
 
                 sale.SaleItens.Add(itemSale);
             }
+            CalculateTotalSale(); 
+            CarregaGridItensSale();
         }
         protected override void New()
         {
@@ -140,7 +142,7 @@ namespace IFSPStore.App.Cadastros
         }
         protected override void CarregaGrid()
         {
-            var includes = new List<string>() { "Customer", "Salesman" };
+            var includes = new List<string>() { "Customer", "Salesman", "SaleItens" };
             sales = _saleService.Get<SaleModel>(includes).ToList();
             dataGridViewList.DataSource = sales;
             dataGridViewList.Columns["IdUser"]!.Visible = false;

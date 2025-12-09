@@ -61,7 +61,7 @@
             txtUser.Size = new Size(342, 48);
             txtUser.TabIndex = 0;
             txtUser.TabStop = false;
-            txtUser.TextAlign = HorizontalAlignment.Left;
+            txtUser.TextAlign = HorizontalAlignment.Center;
             txtUser.TrailingIcon = null;
             txtUser.UseSystemPasswordChar = false;
             // 
@@ -92,7 +92,7 @@
             txtPassword.Size = new Size(342, 48);
             txtPassword.TabIndex = 1;
             txtPassword.TabStop = false;
-            txtPassword.TextAlign = HorizontalAlignment.Left;
+            txtPassword.TextAlign = HorizontalAlignment.Center;
             txtPassword.TrailingIcon = null;
             txtPassword.UseSystemPasswordChar = true;
             // 
