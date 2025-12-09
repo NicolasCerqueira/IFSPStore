@@ -19,9 +19,9 @@ namespace IFSPStore.App.Cadastros
         private readonly IBaseService<Category> _categoryService;
 
         private List<SaleModel>? sales;
-        public SaleForm(IBaseService<Sale> saleService, 
+        public SaleForm(IBaseService<Sale> saleService,
                              IBaseService<User> userService,
-                             IBaseService<Customer> customerService, 
+                             IBaseService<Customer> customerService,
                              IBaseService<Product> productServic,
                              IBaseService<Category> categoryService)
         {
@@ -64,14 +64,14 @@ namespace IFSPStore.App.Cadastros
 
             if (cboUser.SelectedValue != null && int.TryParse(cboUser.SelectedValue.ToString(), out var idUser))
             {
-                sale.SalesmanId = idUser; 
-                sale.Salesman = null;   
+                sale.SalesmanId = idUser;
+                sale.Salesman = null;
             }
 
             if (cboCustomer.SelectedValue != null && int.TryParse(cboCustomer.SelectedValue.ToString(), out var idCustomer))
             {
-                sale.CustomerId = idCustomer; 
-                sale.Customer = null;         
+                sale.CustomerId = idCustomer;
+                sale.Customer = null;
             }
 
             sale.SaleTotal = _saleItems.Sum(x => x.TotalPrice);
@@ -82,8 +82,8 @@ namespace IFSPStore.App.Cadastros
                 var itemSale = new SaleItem
                 {
                     Sale = sale,
-                    ProductId = item.IdProduct, 
-                    Product = null,             
+                    ProductId = item.IdProduct,
+                    Product = null,
 
                     UnitPrice = item.UnitPrice,
                     Quantity = item.Quantity,
@@ -179,7 +179,7 @@ namespace IFSPStore.App.Cadastros
                     Product = item.Product!.Name,
                     TotalPrice = item.TotalPrice,
                     Quantity = item.Quantity,
-                    SaleUnit = item.UnitPrice.ToString(),
+                    SaleUnit = item.UnitPrice.ToString("N2"),
                 };
                 _saleItems.Add(vendaItem);
             }
@@ -319,6 +319,22 @@ namespace IFSPStore.App.Cadastros
             {
                 // Se for letra ou símbolo não escreve nada
                 e.Handled = true;
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewItens.SelectedRows.Count > 0)
+            {
+                var index = dataGridViewItens.SelectedRows[0].Index;
+
+                _saleItems.RemoveAt(index);
+                CarregaGridItensSale();
+                CalculateTotalSale();
+            }
+            else
+            {
+                MessageBox.Show("Selecione um item para remover.");
             }
         }
     }

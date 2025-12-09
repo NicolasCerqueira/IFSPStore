@@ -226,6 +226,7 @@
             dataGridViewList.AllowUserToDeleteRows = false;
             dataGridViewList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewList.Location = new Point(1, 0);
+            dataGridViewList.MultiSelect = false;
             dataGridViewList.Name = "dataGridViewList";
             dataGridViewList.ReadOnly = true;
             dataGridViewList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

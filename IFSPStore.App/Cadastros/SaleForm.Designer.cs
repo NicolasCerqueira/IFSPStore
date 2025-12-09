@@ -33,6 +33,8 @@
             txtId = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             cboCustomer = new ReaLTaiizor.Controls.MaterialComboBox();
             groupBoxItens = new GroupBox();
+            btnExcluir = new ReaLTaiizor.Controls.MaterialButton();
+            cboCategory = new ReaLTaiizor.Controls.MaterialComboBox();
             txtQuantity = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             dataGridViewItens = new DataGridView();
             btnAdd = new ReaLTaiizor.Controls.MaterialButton();
@@ -42,12 +44,15 @@
             cboProduct = new ReaLTaiizor.Controls.MaterialComboBox();
             lblQtdItens = new ReaLTaiizor.Controls.MaterialLabel();
             lblTotalPrice = new ReaLTaiizor.Controls.MaterialLabel();
-            cboCategory = new ReaLTaiizor.Controls.MaterialComboBox();
             tabControlRegister.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBoxItens.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewItens).BeginInit();
             SuspendLayout();
+            // 
+            // tabPage2
+            // 
+            tabPage2.Size = new Size(790, 597);
             // 
             // tabControlRegister
             // 
@@ -193,6 +198,7 @@
             // 
             // groupBoxItens
             // 
+            groupBoxItens.Controls.Add(btnExcluir);
             groupBoxItens.Controls.Add(cboCategory);
             groupBoxItens.Controls.Add(txtQuantity);
             groupBoxItens.Controls.Add(dataGridViewItens);
@@ -207,6 +213,51 @@
             groupBoxItens.TabIndex = 7;
             groupBoxItens.TabStop = false;
             groupBoxItens.Text = "SaleItens";
+            // 
+            // btnExcluir
+            // 
+            btnExcluir.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnExcluir.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnExcluir.Depth = 0;
+            btnExcluir.HighEmphasis = true;
+            btnExcluir.Icon = null;
+            btnExcluir.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            btnExcluir.Location = new Point(707, 85);
+            btnExcluir.Margin = new Padding(4, 6, 4, 6);
+            btnExcluir.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.NoAccentTextColor = Color.Empty;
+            btnExcluir.Size = new Size(64, 36);
+            btnExcluir.TabIndex = 8;
+            btnExcluir.Text = "-";
+            btnExcluir.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnExcluir.UseAccentColor = false;
+            btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
+            // 
+            // cboCategory
+            // 
+            cboCategory.AutoResize = false;
+            cboCategory.BackColor = Color.FromArgb(255, 255, 255);
+            cboCategory.Depth = 0;
+            cboCategory.DrawMode = DrawMode.OwnerDrawVariable;
+            cboCategory.DropDownHeight = 174;
+            cboCategory.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboCategory.DropDownWidth = 121;
+            cboCategory.Enabled = false;
+            cboCategory.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            cboCategory.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            cboCategory.FormattingEnabled = true;
+            cboCategory.Hint = "Category";
+            cboCategory.IntegralHeight = false;
+            cboCategory.ItemHeight = 43;
+            cboCategory.Location = new Point(6, 75);
+            cboCategory.MaxDropDownItems = 4;
+            cboCategory.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            cboCategory.Name = "cboCategory";
+            cboCategory.Size = new Size(238, 49);
+            cboCategory.StartIndex = 0;
+            cboCategory.TabIndex = 7;
             // 
             // txtQuantity
             // 
@@ -245,7 +296,10 @@
             // 
             dataGridViewItens.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewItens.Location = new Point(6, 130);
+            dataGridViewItens.MultiSelect = false;
             dataGridViewItens.Name = "dataGridViewItens";
+            dataGridViewItens.ReadOnly = true;
+            dataGridViewItens.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewItens.Size = new Size(766, 276);
             dataGridViewItens.TabIndex = 5;
             // 
@@ -415,30 +469,6 @@
             lblTotalPrice.TabIndex = 9;
             lblTotalPrice.Text = "Total Price: 0";
             // 
-            // cboCategory
-            // 
-            cboCategory.AutoResize = false;
-            cboCategory.BackColor = Color.FromArgb(255, 255, 255);
-            cboCategory.Depth = 0;
-            cboCategory.DrawMode = DrawMode.OwnerDrawVariable;
-            cboCategory.DropDownHeight = 174;
-            cboCategory.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboCategory.DropDownWidth = 121;
-            cboCategory.Enabled = false;
-            cboCategory.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            cboCategory.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            cboCategory.FormattingEnabled = true;
-            cboCategory.Hint = "Category";
-            cboCategory.IntegralHeight = false;
-            cboCategory.ItemHeight = 43;
-            cboCategory.Location = new Point(6, 75);
-            cboCategory.MaxDropDownItems = 4;
-            cboCategory.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            cboCategory.Name = "cboCategory";
-            cboCategory.Size = new Size(238, 49);
-            cboCategory.StartIndex = 0;
-            cboCategory.TabIndex = 7;
-            // 
             // SaleForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -473,5 +503,6 @@
         private ReaLTaiizor.Controls.MaterialLabel lblQtdItens;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit txtQuantity;
         private ReaLTaiizor.Controls.MaterialComboBox cboCategory;
+        private ReaLTaiizor.Controls.MaterialButton btnExcluir;
     }
 }
