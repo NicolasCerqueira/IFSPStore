@@ -16,15 +16,20 @@ namespace IFSPStore.App.Cadastros
         private readonly IBaseService<User> _userService;
         private readonly IBaseService<Customer> _customerService;
         private readonly IBaseService<Product> _productService;
+        private readonly IBaseService<Category> _categoryService;
 
         private List<SaleModel>? sales;
-        public SaleForm(IBaseService<Sale> saleService, IBaseService<User> userService,
-                             IBaseService<Customer> customerService, IBaseService<Product> productServic)
+        public SaleForm(IBaseService<Sale> saleService, 
+                             IBaseService<User> userService,
+                             IBaseService<Customer> customerService, 
+                             IBaseService<Product> productServic,
+                             IBaseService<Category> categoryService)
         {
             _saleService = saleService;
             _userService = userService;
             _customerService = customerService;
             _productService = productServic;
+            _categoryService = categoryService;
             InitializeComponent();
             _saleItems = new List<SaleItemModel>();
             loadCombo();
@@ -45,6 +50,10 @@ namespace IFSPStore.App.Cadastros
             cboProduct.ValueMember = "Id";
             cboProduct.DisplayMember = "Name";
             cboProduct.DataSource = _productService.Get<Product>().ToList();
+
+            cboCategory.ValueMember = "Id";
+            cboCategory.DisplayMember = "Name";
+            cboCategory.DataSource = _categoryService.Get<Category>().ToList();
         }
         private void PreencheObject(Sale sale)
         {
@@ -53,43 +62,35 @@ namespace IFSPStore.App.Cadastros
                 sale.SaleDate = saleDate;
             }
 
-            if (int.TryParse(cboUser.SelectedValue.ToString(), out var idUser))
+            if (cboUser.SelectedValue != null && int.TryParse(cboUser.SelectedValue.ToString(), out var idUser))
             {
-                var user = _userService.GetById<User>(idUser);
-                sale.Salesman = user;
+                sale.SalesmanId = idUser; 
+                sale.Salesman = null;   
             }
 
-            if (int.TryParse(cboCustomer.SelectedValue.ToString(), out var idCustomer))
+            if (cboCustomer.SelectedValue != null && int.TryParse(cboCustomer.SelectedValue.ToString(), out var idCustomer))
             {
-                var customer = _customerService.GetById<Customer>(idCustomer);
-                sale.Customer = customer;
+                sale.CustomerId = idCustomer; 
+                sale.Customer = null;         
             }
+
             sale.SaleTotal = _saleItems.Sum(x => x.TotalPrice);
-            
 
+            sale.SaleItens.Clear();
             foreach (var item in _saleItems)
             {
                 var itemSale = new SaleItem
                 {
                     Sale = sale,
-                    Product = _productService.GetById<Product>(item.IdProduct),
-                    UnitPrice = item.UnitPrice.ToString(),
+                    ProductId = item.IdProduct, 
+                    Product = null,             
+
+                    UnitPrice = item.UnitPrice,
                     Quantity = item.Quantity,
                     TotalPrice = item.TotalPrice
                 };
 
                 sale.SaleItens.Add(itemSale);
-            }
-
-        }
-        private void PreencheObjectProduct(Product product)
-        {
-           
-            if (int.TryParse(cboCategory.SelectedValue?.ToString(), out int idCategory))
-            {
-                // Use CategoryId para evitar o erro de "Tracking" do Entity Framework
-                product.CategoryId = idCategory;
-                product.Category = null;
             }
         }
         protected override void New()
@@ -118,7 +119,7 @@ namespace IFSPStore.App.Cadastros
                     PreencheObject(sale);
                     sale = _saleService.Add<Sale, Sale, SaleValidator>(sale);
                 }
-
+                CarregaGrid();
                 tabControlRegister.SelectedIndex = 1;
             }
             catch (Exception ex)
@@ -144,6 +145,15 @@ namespace IFSPStore.App.Cadastros
             dataGridViewList.DataSource = sales;
             dataGridViewList.Columns["IdUser"]!.Visible = false;
             dataGridViewList.Columns["IdCustomer"]!.Visible = false;
+            if (dataGridViewList.Columns.Contains("Salesman"))
+            {
+                dataGridViewList.Columns["Salesman"]!.Visible = false;
+            }
+            dataGridViewList.Columns["Quantity"]!.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewList.Columns["User"]!.HeaderText = "Salesman";
+            dataGridViewList.Columns["SaleTotal"]!.DefaultCellStyle.Format = "C2"; // Formata como moeda
+            dataGridViewList.Columns["SaleDate"]!.HeaderText = "Data Venda";
+            dataGridViewList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //dataGridViewList.Columns["Price"].DefaultCellStyle.Format = "C2";
             //dataGridViewList.Columns["TotalPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
@@ -153,7 +163,7 @@ namespace IFSPStore.App.Cadastros
             txtId.Text = linha?.Cells["Id"].Value.ToString();
             cboUser.SelectedValue = linha?.Cells["IdUser"].Value;
             cboCustomer.SelectedValue = linha?.Cells["IdCustomer"].Value;
-            txtSaleDate.Text = DateTime.TryParse(linha?.Cells["Date"].Value.ToString(), out var dataC)
+            txtSaleDate.Text = DateTime.TryParse(linha?.Cells["SaleDate"].Value.ToString(), out var dataC)
                ? dataC.ToString("g")
                : "";
 
@@ -169,7 +179,7 @@ namespace IFSPStore.App.Cadastros
                     Product = item.Product!.Name,
                     TotalPrice = item.TotalPrice,
                     Quantity = item.Quantity,
-                    SaleUnit = item.UnitPrice
+                    SaleUnit = item.UnitPrice.ToString(),
                 };
                 _saleItems.Add(vendaItem);
             }
@@ -277,7 +287,7 @@ namespace IFSPStore.App.Cadastros
 
                 txtPrice.Text = product.Price.ToString("N2");
 
-                //txtCategory.Text = product.Category.Name;
+                cboCategory.SelectedValue = product.CategoryId;
             }
         }
         private void CalcularTotalItem()

@@ -11,6 +11,7 @@ namespace IFSPStore.App.Models
         public int Id { get; set; }
         public DateTime SaleDate { get; set; }
         public decimal SaleTotal { get; set; }
+        public decimal Quantity { get; set; }
         public int IdUser { get; set; }
         public string User{ get; set; }
         public UserModel Salesman { get; set; }
