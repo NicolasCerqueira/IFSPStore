@@ -58,14 +58,27 @@ namespace IFSPStore.App
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(e.CloseReason == CloseReason.ApplicationExitCall)
+            if (e.CloseReason == CloseReason.ApplicationExitCall)
             {
                 e.Cancel = true;
             }
         }
 
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null)
+            {
+                this.ActiveMdiChild.Close();
+            }
+        }
+
         private void showForm<TFormulario>() where TFormulario : MaterialForm
         {
+            //fecha todos os forms abertos dentro do mdi
+            foreach (var forms in this.MdiChildren)
+            {
+                forms.Close();
+            }
             var form = ConfigureDI.serviceProvider!.GetService<TFormulario>();
             if (form != null && !form.IsDisposed)
             {

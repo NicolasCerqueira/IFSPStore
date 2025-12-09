@@ -118,8 +118,9 @@
             // closeToolStripMenuItem
             // 
             closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            closeToolStripMenuItem.Size = new Size(48, 20);
-            closeToolStripMenuItem.Text = "Close";
+            closeToolStripMenuItem.Size = new Size(93, 20);
+            closeToolStripMenuItem.Text = "Close Register";
+            closeToolStripMenuItem.Click += closeToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -146,6 +147,7 @@
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "IFSP Store";
             WindowState = FormWindowState.Maximized;
             FormClosing += MainForm_FormClosing;
