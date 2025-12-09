@@ -8,6 +8,7 @@ namespace IFSPStore.App.Outros
         public HelpForm()
         {
             InitializeComponent();
+            btnContactWhatsApp.Focus();
         }
 
         private void btnContactWhatsApp_Click(object sender, EventArgs e)
@@ -15,7 +16,7 @@ namespace IFSPStore.App.Outros
             string num = "5518981002171";
             string msg = "Olá, preciso de ajuda com o IFSP Store.";
 
-            //Monta a URL do WhatsApp
+            //monta a URL pro meu whatsApp
             string url = $"https://wa.me/{num}?text={Uri.EscapeDataString(msg)}";
             try
             {

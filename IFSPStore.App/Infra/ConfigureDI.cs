@@ -41,7 +41,7 @@ namespace IFSPStore.App.Infra
 
             // Services
             services.AddScoped<IBaseService<Category>, BaseService<Category>>();
-            services.AddScoped<IBaseService<User>, BaseService<User>>();//se der bosta comente isso
+            services.AddScoped<IBaseService<User>, BaseService<User>>();//se der bosta comente isso 03/12
             services.AddScoped<IBaseService<City>, BaseService<City>>();
             services.AddScoped<IBaseService<Customer>, BaseService<Customer>>();
             services.AddScoped<IBaseService<Product>, BaseService<Product>>();

@@ -238,7 +238,7 @@
             ClientSize = new Size(806, 558);
             Location = new Point(0, 0);
             Name = "CustomerForm";
-            Text = "CustomerForm";
+            Text = "Customer ​​registration";
             tabControlRegister.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             ResumeLayout(false);

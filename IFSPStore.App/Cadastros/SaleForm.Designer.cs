@@ -476,7 +476,7 @@
             ClientSize = new Size(802, 702);
             Location = new Point(0, 0);
             Name = "SaleForm";
-            Text = "SaleForm";
+            Text = "Sale ​​registration";
             tabControlRegister.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();

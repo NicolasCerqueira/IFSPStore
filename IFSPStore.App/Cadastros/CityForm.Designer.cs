@@ -35,10 +35,6 @@
             tabPage1.SuspendLayout();
             SuspendLayout();
             // 
-            // tabPage2
-            // 
-            tabPage2.Size = new Size(790, 450);
-            // 
             // tabPage1
             // 
             tabPage1.Controls.Add(cboDistrict);
@@ -141,7 +137,7 @@
             ClientSize = new Size(806, 556);
             Location = new Point(0, 0);
             Name = "CityForm";
-            Text = "CityForm";
+            Text = "City ​​registration";
             tabControlRegister.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             ResumeLayout(false);

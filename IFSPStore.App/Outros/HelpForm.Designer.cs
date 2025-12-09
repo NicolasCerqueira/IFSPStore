@@ -40,7 +40,7 @@
             materialLabel1.AutoSize = true;
             materialLabel1.Depth = 0;
             materialLabel1.FlatStyle = FlatStyle.Popup;
-            materialLabel1.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             materialLabel1.Location = new Point(89, 76);
             materialLabel1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel1.Name = "materialLabel1";
@@ -118,6 +118,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "HelpForm";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Help";
             ResumeLayout(false);
             PerformLayout();

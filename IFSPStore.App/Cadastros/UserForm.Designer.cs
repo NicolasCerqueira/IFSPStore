@@ -301,7 +301,7 @@
             Location = new Point(0, 0);
             Name = "UserForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "UserForm";
+            Text = "User ​​registration";
             tabControlRegister.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
